@@ -2,6 +2,7 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const { getAllPlanets } = require("./handlers/getAllPlanets")
 
 const PORT = 8000;
 
