@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import {Image} from 'cloudinary-react';
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
+import Profile from "./Profile";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // Used to get boxshadow input
 // function randomNumber(min, max) {
@@ -14,8 +18,17 @@ import {Image} from 'cloudinary-react';
 // console.log(result.substring(0, result.length - 1))
 
 const Home = () => {
+    const { isLoading } = useAuth0();
+
+    if (isLoading) return <h2>Loading...</h2>
+
     return(
-        <>
+        <Wrapper>
+        <LogStuff>
+            <LoginButton />
+            <LogoutButton />
+            <Profile />
+        </LogStuff>
         <AllPlanets>
         <Image cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995979/n0pb8bpdgnjqmt31p9lrvkmrsq-aa79d268d2480d7c647c7451900dda9a_eaogqm.png" style={{height: '90px', width: '90px'}}/>
         <Image cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
@@ -26,16 +39,26 @@ const Home = () => {
         <Stargazing>
         </Stargazing>
         </Box>
-        </>
+        </Wrapper>
     )
 }
 
 export default Home;
 
+const Wrapper = styled.div`
+margin:none;
+`
+
+const LogStuff = styled.div`
+position:absolute;
+left:50%;
+top:20%;
+`
+
 const AllPlanets = styled.div`
 position:absolute;
 left:45%;
-top:50%;
+top:30%;
 `
 
 const Stargazing = styled.div`
