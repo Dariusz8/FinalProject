@@ -4,6 +4,7 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import Profile from "./Profile";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 
 // Used to get boxshadow input
 // function randomNumber(min, max) {
@@ -30,10 +31,26 @@ const Home = () => {
             <Profile />
         </LogStuff>
         <AllPlanets>
-        <Image cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995979/n0pb8bpdgnjqmt31p9lrvkmrsq-aa79d268d2480d7c647c7451900dda9a_eaogqm.png" style={{height: '90px', width: '90px'}}/>
-        <Image cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
-        <Image cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '90px', width: '90px'}}/>
-        <Image cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
+            <div>
+                <Redirect to={`/6436f1ed1575f64893aaad34`}>
+                <Image id="6436f1ed1575f64893aaad34" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995979/n0pb8bpdgnjqmt31p9lrvkmrsq-aa79d268d2480d7c647c7451900dda9a_eaogqm.png" style={{height: '90px', width: '90px'}}/>
+                </Redirect>
+            </div>
+            <div>
+                <Redirect to={`/6437129f96fe2e99cb9f57a8`}>
+                <Image id="6437129f96fe2e99cb9f57a8" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
+                </Redirect>
+            </div>
+            <div>
+                <Redirect to={`/643711f296fe2e99cb9f57a7`}>
+                <Image id="643711f296fe2e99cb9f57a7" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '90px', width: '90px'}}/>
+                </Redirect>
+            </div>
+            <div>
+                <Redirect to={`/6436f16c1575f64893aaad33`}>
+                <Image id="6436f16c1575f64893aaad33" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
+                </Redirect>
+            </div>
         </AllPlanets>
         <Box>
         <Stargazing>
@@ -56,6 +73,7 @@ top:20%;
 `
 
 const AllPlanets = styled.div`
+display: flex;
 position:absolute;
 left:45%;
 top:30%;
@@ -86,3 +104,6 @@ const Box = styled.div`
 background-color:black;
 height:100vh;
 width:100vw;`
+
+const Redirect = styled(Link)`
+`
