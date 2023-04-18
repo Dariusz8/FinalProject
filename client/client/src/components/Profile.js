@@ -4,6 +4,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 const Profile = () => {
     const { user, isAuthenticated } = useAuth0();
 
+    const doUser = async(req, res) =>{
+        
+    }
+
     return(
         isAuthenticated && (
         <div>
@@ -11,6 +15,7 @@ const Profile = () => {
             <h2>{user.name}</h2>
             <p>{user.email}</p>
             {JSON.stringify(user, null, 2)}
+            <button onClick={doUser} >Confirm User for Launch</button>
         </div>
         )
     )
