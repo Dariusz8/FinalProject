@@ -6,7 +6,7 @@ const { getAllPlanets } = require("./handlers/getAllPlanets");
 const { getPlanet } = require("./handlers/getPlanet");
 const { getUser } = require("./handlers/getUser");
 const { deleteUser } = require("./handlers/deleteUser");
-const { putUser } = require("./handlers/putUser");
+const { patchUser } = require("./handlers/patchUser");
 const { postUser } = require('./handlers/postUser');
 
 const PORT = 8000;
@@ -35,6 +35,6 @@ express()
   .get('/user/:id', getUser)
   .delete('/:id', deleteUser)
   .post('/user', postUser)
-  .put('/user', putUser)
+  .patch('/user', patchUser)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));

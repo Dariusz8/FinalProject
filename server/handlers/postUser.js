@@ -16,9 +16,16 @@ const postUser = async(req, res) =>{
     try{
         await client.connect();
         const db = client.db("starpath")
-        const result = db.collection("users")
-        .insertOne({theUser});
-        return res.status.json({ status:202, success:true, data:result})
+        const userExists = await db.collection("users")
+            .findOne({ email: theUser.email});
+
+        if(userExists){
+            res.status(200).json({ status:200, success:true, data:"May the force be with you"})
+        }else{
+        const result = await db.collection("users").insertOne(theUser);
+        
+        return res.status(202).json({ status:202, success:true, data:result})
+    }
     }catch(err){
         console.log(err)
     }finally{
