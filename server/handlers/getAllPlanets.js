@@ -27,4 +27,4 @@ const getAllPlanets = async(req, res) => {
 }
 }
 
-module.exports = {getAllPlanets};
+module.exports = { getAllPlanets };

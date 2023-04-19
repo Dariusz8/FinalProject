@@ -28,4 +28,4 @@ try{
     client.close();
 }
 }
-module.exports = { getPlanet};
+module.exports = { getPlanet };

@@ -4,6 +4,10 @@ const express = require('express');
 const morgan = require('morgan');
 const { getAllPlanets } = require("./handlers/getAllPlanets");
 const { getPlanet } = require("./handlers/getPlanet");
+const { getUser } = require("./handlers/getUser");
+const { deleteUser } = require("./handlers/deleteUser");
+const { putUser } = require("./handlers/putUser");
+const { postUser } = require('./handlers/postUser');
 
 const PORT = 8000;
 
@@ -28,5 +32,9 @@ express()
   // REST endpoints?
   .get('/planets',getAllPlanets)
   .get('/:id', getPlanet)
+  .get('/user/:id', getUser)
+  .delete('/:id', deleteUser)
+  .post('/user', postUser)
+  .put('/user', putUser)
 
   .listen(PORT, () => console.info(`Listening on port ${PORT}`));
