@@ -6,13 +6,13 @@ import { Navigate } from 'react-router-dom';
 
 const Profile = () => {
     const { user, isAuthenticated } = useAuth0();
-    const [authInfo, setAuthInfo] = useState(null);
+    const [ready, setReady] = useState(null);
 
     useEffect(() =>{
         fetch(`/user/${user._id}`)
             .then((res)=>res.json())
             .then((parsedUserRes)=>{
-                setAuthInfo(parsedUserRes.data)
+                setReady(parsedUserRes.data)
             })
             .catch((err)=>{
                 console.log("error getting use", err)
@@ -24,7 +24,7 @@ const Profile = () => {
         
     },[user._id, isAuthenticated])
 
-    if(authInfo){
+    if(ready){
         return(<Navigate to="/quests"/>)
     }
 
@@ -50,7 +50,7 @@ const Profile = () => {
             <img src={user.picture} alt={user.name} />
             <h2>{user.name}</h2>
             <p>{user.email}</p>
-            <button onClick={doUser} >Confirm User for Launch</button>
+            <button onClick={doUser} >Confirm Launch</button>
             
             <LogoutButton/>
         </div>

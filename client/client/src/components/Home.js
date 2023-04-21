@@ -66,7 +66,6 @@ animation: animateTop 3s ease-in infinite;
   }
   }
 `
-
 const GreenSpan = styled.div`
 position: absolute;
 border-radius: 100vmax;
@@ -167,7 +166,6 @@ const RedSpan2 = styled.div`
     }
   }
 `;
-
 
 const HomePicWrapper = styled.div`
 border-radius: 8px;

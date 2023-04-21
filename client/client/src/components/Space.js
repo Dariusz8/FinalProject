@@ -1,38 +1,49 @@
 import styled from "styled-components";
 import {Image} from 'cloudinary-react';
-import { Link } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect } from "react";
+import Cockpit from "./Cockpit";
 
 const Space = () => {
+    const { user, isAuthenticated } = useAuth0();
+
+    useEffect(() =>{
+        if(!user){
+            return(<Navigate to="/"/>)
+        }
+    },[])
 
     return(
         <Wrapper>
         <AllPlanets>
             <div>
-                <Redirect to={`/6436f1ed1575f64893aaad34`}>
+                <NavLinky to={`/6436f1ed1575f64893aaad34`}>
                 <Image id="6436f1ed1575f64893aaad34" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
-                </Redirect>
+                </NavLinky>
             </div>
             <div>
-                <Redirect to={`/6437129f96fe2e99cb9f57a8`}>
+                <NavLinky to={`/6437129f96fe2e99cb9f57a8`}>
                 <Image id="6437129f96fe2e99cb9f57a8" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
-                </Redirect>
+                </NavLinky>
             </div>
             <div>
-                <Redirect to={`/643711f296fe2e99cb9f57a7`}>
+                <NavLinky to={`/643711f296fe2e99cb9f57a7`}>
                 <Image id="643711f296fe2e99cb9f57a7" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '100px', width: '100px'}}/>
-                </Redirect>
+                </NavLinky>
             </div>
             <div>
-                <Redirect to={`/6436f16c1575f64893aaad33`}>
+                <NavLinky to={`/6436f16c1575f64893aaad33`}>
                 <Image id="6436f16c1575f64893aaad33" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
-                </Redirect>
+                </NavLinky>
             </div>
             <div>
-                <Redirect to={`/6437138561b80f8966d3de7a`}>
+                <NavLinky to={`/6437138561b80f8966d3de7a`}>
                 <Image id="66437138561b80f8966d3de7a" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681598419/planet_geonosis_ir9jus.png" style={{height: '90px', width: '90px'}}/>
-                </Redirect>
+                </NavLinky>
             </div>
         </AllPlanets>
+        <Cockpit/>
         <Box>
         <Stargazing>
         </Stargazing>
@@ -44,16 +55,15 @@ const Space = () => {
 export default Space;
 
 const Wrapper = styled.div`
-margin:none;
+margin:0px;
 `
 
 const AllPlanets = styled.div`
 display: flex;
 position:absolute;
-left:45%;
+left:35%;
 top:30%;
 `
-
 const Stargazing = styled.div`
 background-color: white;
 position: fixed;
@@ -73,12 +83,10 @@ animation: zoom 8s alternate ease-in-out infinite;
     }
 }
 `
-
-
 const Box = styled.div`
 background-color:black;
 height:100vh;
-width:100vw;`
-
-const Redirect = styled(Link)`
+width:100vw;
+`
+const NavLinky = styled(NavLink)`
 `
