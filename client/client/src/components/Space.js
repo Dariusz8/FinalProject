@@ -6,13 +6,13 @@ import { useEffect } from "react";
 import Cockpit from "./Cockpit";
 
 const Space = () => {
-    const { user, isAuthenticated } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
 
-    useEffect(() =>{
-        if(!user){
-            return(<Navigate to="/"/>)
+    if (isLoading) return <h2>Loading...</h2>
+
+    if(!isAuthenticated){
+        return(<Navigate to="/"/>)
         }
-    },[])
 
     return(
         <Wrapper>

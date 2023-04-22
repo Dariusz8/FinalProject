@@ -2,19 +2,14 @@ import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
-
-
 const QuestSelect = () =>{
-    const { user, isAuthenticated } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
 
-    useEffect(() =>{
-        if(!user){
-            return(<Navigate to="/"/>)
-        }
-        return () =>{
-            //cleanup??
-        }
-    },[])
+    if (isLoading) return <h2>Loading...</h2>
+    
+    if(!isAuthenticated){
+        return(<Navigate to="/"/>)
+    }
 
     return(
         <div>

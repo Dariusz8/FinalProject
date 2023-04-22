@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {Image} from 'cloudinary-react';
 import LoginButton from "./LoginButton";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Navigate } from 'react-router-dom';
 //import Profile from "./Profile";
 //import { Link } from "react-router-dom";
 
@@ -18,9 +19,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 // console.log(result.substring(0, result.length - 1))
 
 const Home = () => {
-    const { isLoading } = useAuth0();
+    const { isLoading, user, isAuthenticated } = useAuth0();
 
     if (isLoading) return <h2>Loading...</h2>
+
+    if(isAuthenticated){
+      return(<Navigate to="/profile"/>)
+  }
 
     return(
         <Wrapper>

@@ -6,35 +6,33 @@ import { Navigate } from 'react-router-dom';
 
 const Profile = () => {
     const { user, isAuthenticated } = useAuth0();
-    const [ready, setReady] = useState(null);
+    const [ready, setReady] = useState(false);
 
     useEffect(() =>{
         fetch(`/user/${user._id}`)
             .then((res)=>res.json())
             .then((parsedUserRes)=>{
-                setReady(parsedUserRes.data)
+                console.log(parsedUserRes.data)
             })
             .catch((err)=>{
                 console.log("error getting use", err)
             })
             return () =>{
-                if(ready){
-                    return(<Navigate to="/quests"/>)
-                }
             }
         
     },[isAuthenticated])
 
-    // if(ready){
-    //     return(<Navigate to="/quests"/>)
-    // }
+    if(ready){
+        return(<Navigate to="/quests"/>)
+    }
 
     if(!isAuthenticated){
         return(<Navigate to="/"/>)
     }
 
     const doUser = async(req, res) =>{
-        await fetch('/user',{
+        await setReady(true);
+         await fetch('/user',{
             method: 'POST',
             headers:{
                 'Content-type': 'application/json'
@@ -55,8 +53,7 @@ const Profile = () => {
             <img src={user.picture} alt={user.name} />
             <h2>{user.name}</h2>
             <p>{user.email}</p>
-            <button onClick={doUser} >Confirm Launch</button>
-            
+            <button onClick={doUser}> Confirm Launch </button>
             <LogoutButton/>
         </div>
         )
