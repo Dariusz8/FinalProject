@@ -24,9 +24,9 @@ const LoginButton = () => {
         // })
     }
 
-    if(isAuthenticated){
-        return(<Navigate to="/profile"/>)
-    }
+    // if(isAuthenticated){
+    //     return(<Navigate to="/profile"/>)
+    // }
 
     return(
         !isAuthenticated && (

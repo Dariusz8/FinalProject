@@ -18,14 +18,19 @@ const Profile = () => {
                 console.log("error getting use", err)
             })
             return () =>{
-                //cleanup??
+                if(ready){
+                    return(<Navigate to="/quests"/>)
+                }
             }
-
         
-    },[user._id, isAuthenticated])
+    },[isAuthenticated])
 
-    if(ready){
-        return(<Navigate to="/quests"/>)
+    // if(ready){
+    //     return(<Navigate to="/quests"/>)
+    // }
+
+    if(!isAuthenticated){
+        return(<Navigate to="/"/>)
     }
 
     const doUser = async(req, res) =>{
