@@ -29,17 +29,19 @@ const Home = () => {
 
     return(
         <Wrapper>
-        <HomeTitle>Yet To Arrive, They Have</HomeTitle>
-        <HomePicWrapper>
+          <TitleWrapper>
+            <HomeTitle>Yet To Arrive, They Have</HomeTitle>
+          </TitleWrapper>
+          <HomePicWrapper>
             <PurpleSpan></PurpleSpan>
             <GreenSpan></GreenSpan>
             <RedSpan></RedSpan>
             <RedSpan2></RedSpan2>
             <BlueSpan></BlueSpan>
-        </HomePicWrapper>
-        <LogStuff>
+          </HomePicWrapper>
+          <LogStuff>
             <LoginButton />
-        </LogStuff>
+          </LogStuff>
         </Wrapper>
     )
 }
@@ -52,7 +54,7 @@ border-radius: 100vmax;
 top:0;
 left:0;
 width: 0px;
-height: 5px;
+height: 8px;
 background: linear-gradient(
     -90deg,
     transparent 1%,
@@ -76,7 +78,7 @@ position: absolute;
 border-radius: 100vmax;
 bottom:0;
 right:0;
-width: 5px;
+width: 8px;
 height: 0px;
 background: linear-gradient(
     180deg,
@@ -101,7 +103,7 @@ position: absolute;
 border-radius: 100vmax;
 bottom:0;
 left:0;
-width: 5px;
+width: 8px;
 height: 0px;
 background: linear-gradient(
     180deg,
@@ -127,7 +129,7 @@ border-radius: 100vmax;
 bottom:0;
 left:50%;
 width: 0px;
-height: 5px;
+height: 8px;
 background: linear-gradient(
     -90deg,
     transparent 1%,
@@ -152,7 +154,7 @@ const RedSpan2 = styled.div`
   bottom: 0;
   right: 48%;
   width: 0px;
-  height: 5px;
+  height: 8px;
   background: linear-gradient(
     90deg,
     transparent 1%,
@@ -173,33 +175,66 @@ const RedSpan2 = styled.div`
 `;
 
 const HomePicWrapper = styled.div`
-border-radius: 8px;
-margin-left: 5px;
-margin-right: 5px;
+border-radius: 4px;
+/* margin-left: 5px;
+margin-right: 5px; */
 position: relative;
-border: solid 1px red;
 width: 99vw;
-height: 60vh;
-top:11vh;
+height: 98vh;
+//top:11vh;
 background: transparent;
 overflow: hidden;
-border-top: 1px solid rgba(102, 51, 153, 0.5);
+/* border-top: 1px solid rgba(102, 51, 153, 0.5);
   border-right: 1px solid rgba(47,249,36, 0.5);
   border-bottom: 1px solid rgba(235,33,46, 0.5);
-  border-left: 1px solid rgba(46,103,248, 0.5);
+  border-left: 1px solid rgba(46,103,248, 0.5); */
 `
-
 const HomeTitle = styled.h1`
 color:white;
-position:relative;
+letter-spacing: 3px;
+animation: shifty 3s ease-in-out infinite alternate;
+transform: skewX(0deg);
+@keyframes shifty{
+  0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+    transform: skewX(0deg);
+  }
+  41% {
+    transform: skewX(8deg);
+  }
+  42%{
+    transform: skewX(-9deg);
+  }
+  59%{
+    transform: skewX(-3deg) skewY(8deg);
+  }
+  60%{
+    transform:skewX(-3deg) skewY(2deg)
+  }
+  63%{
+    transform: skewX(8deg) skewY(-5deg);
+  }
+  70%{
+    transform: skewX(-2deg) skewY(7deg);
+  }
+  80%{
+    transform: skewX(3deg) skewY(-1deg);
+  }
+}
+`
+
+const TitleWrapper = styled.div`
+width:80vw;
+height: 30vh;
+position:fixed;
 left:40vw;
-top:10vh;`
+top:10vh;
+`
 
 const Wrapper = styled.div`
 width: 100vw;
 height: 100vh;
 background-color: black;
-margin: none;
+margin: 0px;
 overflow: hidden;
 `
 
@@ -209,6 +244,3 @@ const LogStuff = styled.div`
   bottom: 10vh;
   transform: translateX(-50%); 
 `;
-
-
-//grey saber 230, 230, 250
