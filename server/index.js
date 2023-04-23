@@ -8,6 +8,9 @@ const { getUser } = require("./handlers/getUser");
 const { deleteUser } = require("./handlers/deleteUser");
 const { patchUser } = require("./handlers/patchUser");
 const { postUser } = require('./handlers/postUser');
+const { getHomePictures } = require('./handlers/getHomePictures');
+const { getQuestPictures } = require('./handlers/getQuestPictures');
+const { getProfilePictures } = require('./handlers/getProfilePictures');
 
 const PORT = 8000;
 
@@ -31,8 +34,11 @@ express()
 
   // REST endpoints?
   .get('/planets',getAllPlanets)
-  .get('/:id', getPlanet)
   .get('/user/:id', getUser)
+  .get('/profilepics', getProfilePictures)
+  .get('/homepics', getHomePictures)
+  .get('/quests', getQuestPictures)
+  .get('/:id', getPlanet)
   .delete('/:id', deleteUser)
   .post('/user', postUser)
   .patch('/user', patchUser)
