@@ -3,8 +3,6 @@ import {Image} from 'cloudinary-react';
 import LoginButton from "./LoginButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from 'react-router-dom';
-//import Profile from "./Profile";
-//import { Link } from "react-router-dom";
 
 // Used to get boxshadow input
 // function randomNumber(min, max) {

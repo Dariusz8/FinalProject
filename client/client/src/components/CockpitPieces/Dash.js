@@ -1,10 +1,15 @@
 import styled from "styled-components";
+import MainScreen from "./MainScreen";
 
 const Dash = () => {
 
     return(
+    <>
         <Dashboard>
+            <MainScreen/>
         </Dashboard>
+        
+        </>
     )
 }
 
