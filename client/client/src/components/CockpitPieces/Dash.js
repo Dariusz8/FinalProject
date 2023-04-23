@@ -11,7 +11,7 @@ const Dash = () => {
 export default Dash
 
 const Dashboard = styled.div`
-clip-path: polygon(32.2% 40%, 61.7% 40%, 100% 50%, 100% 100%, 85% 100%, 15% 100%, 0% 100%, 0% 50%);
+clip-path: polygon(31% 50%, 64% 50%, 100% 59%, 100% 100%, 0% 100%, 0% 59%);
 position: fixed;
 z-index: 100;
 width: 100vw;
