@@ -13,7 +13,6 @@ const getQuestPictures = async(req, res) => {
         client.connect();
         const db = client.db("starpath");
         const data = await db.collection("quests").find({}).toArray();
-        console.log(data);
 
         data.length > 0
         ? res.status(200).send({ status:200, success:true, data:data})

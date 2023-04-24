@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {Image} from 'cloudinary-react';
 import { NavLink, Navigate } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import Cockpit from "./Cockpit";
 
 const Space = () => {

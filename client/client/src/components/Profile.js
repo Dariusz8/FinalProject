@@ -30,20 +30,29 @@ const Profile = () => {
         return(<Navigate to="/"/>)
     }
 
-    const doUser = async(req, res) =>{
+    const doUser = async() =>{
         await setReady(true);
-         await fetch('/user',{
+        await fetch('/user',{
             method: 'POST',
             headers:{
                 'Content-type': 'application/json'
             },
             body: JSON.stringify({
                 _id:user._id,
-                    email:user.email,
-                    name: user.name,
-                    picture: user.picture,
-                    Logged_in: user.updated_at
+                email:user.email,
+                name: user.name,
+                picture: user.picture,
+                Logged_in: user.updated_at
             })
+        })
+    }
+
+    const retireUser = async(req, res) => {
+        await fetch(`/${user._id}`,{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+              }
         })
     }
 
@@ -55,6 +64,7 @@ const Profile = () => {
             <p>{user.email}</p>
             <button onClick={doUser}> Confirm Launch </button>
             <LogoutButton/>
+            <button onClick={retireUser}> Retire </button>
         </div>
         )
     )

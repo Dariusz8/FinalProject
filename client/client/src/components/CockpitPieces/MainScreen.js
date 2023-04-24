@@ -13,7 +13,7 @@ export default MainScreen
 
 const Wrapper = styled.div`
 position: fixed;
-border: solid 5px rgb(10,10,10);
+border: solid 8px rgb(10,10,10);
 border-bottom: none;
 left:32vw;
 bottom:10vh;

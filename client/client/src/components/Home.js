@@ -3,6 +3,7 @@ import {Image} from 'cloudinary-react';
 import LoginButton from "./LoginButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 // Used to get boxshadow input
 // function randomNumber(min, max) {
@@ -18,6 +19,19 @@ import { Navigate } from 'react-router-dom';
 
 const Home = () => {
     const { isLoading, user, isAuthenticated } = useAuth0();
+    const [backgroundPic, setBackgroundPic] = useState([]);
+
+    useEffect(() => {
+      fetch("/homepics")
+      .then((res)=> res.json())
+      .then((resData)=>{
+          setBackgroundPic(resData.data)
+          console.log(backgroundPic);
+      })
+      .catch((err)=>{
+          console.log(err)
+      })
+  }, []);
 
     if (isLoading) return <h2>Loading...</h2>
 
@@ -193,8 +207,14 @@ letter-spacing: 3px;
 animation: shifty 3s ease-in-out infinite alternate;
 transform: skewX(0deg);
 @keyframes shifty{
-  0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+  0%, 20%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
     transform: skewX(0deg);
+  }
+  15% {
+    transform: skewY(2deg);
+  }
+  25% {
+    transform: skewX(-6deg);
   }
   41% {
     transform: skewX(8deg);
@@ -203,19 +223,19 @@ transform: skewX(0deg);
     transform: skewX(-9deg);
   }
   59%{
-    transform: skewX(-3deg) skewY(8deg);
+    transform: skewX(-3deg) skewY(5deg);
   }
   60%{
-    transform:skewX(-3deg) skewY(2deg)
+    transform:skewY(2deg)
   }
   63%{
-    transform: skewX(8deg) skewY(-5deg);
+    transform: skewY(-4deg);
   }
   70%{
-    transform: skewX(-2deg) skewY(7deg);
+    transform: skewX(-2deg) skewY(1deg);
   }
   80%{
-    transform: skewX(3deg) skewY(-1deg);
+    transform: skewX(3deg);
   }
 }
 `
