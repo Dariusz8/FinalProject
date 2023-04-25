@@ -4,8 +4,7 @@ import { BsFillPersonVcardFill } from "react-icons/bs";
 import { BsReverseListColumnsReverse } from "react-icons/bs";
 import { BsFillRocketTakeoffFill } from "react-icons/bs"
 import { BsFillGearFill } from "react-icons/bs"
-import { BsFillCircleFill } from "react-icons/bs"
-import { BsAirplaneFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 const Dash = () => {
 
@@ -19,24 +18,12 @@ const Dash = () => {
                 <BottomIconButtons><BsFillRocketTakeoffFill/></BottomIconButtons>
                 <BottomIconButtons><BsFillGearFill/></BottomIconButtons>
             </BottomIcons>
-            <RightCircle><BsFillCircleFill/></RightCircle>
         </Dashboard>
         </>
     )
 }
 
 export default Dash
-
-const RightCircle = styled.div`
-position: fixed;
-color:pink;
-background-color: pink;
-left:40vw;
-height:40vh;
-width: 100px;
-height:100px;
-z-index: 10000;
-`
 
 const Dashboard = styled.div`
 clip-path: polygon(31% 50%, 64% 50%, 100% 59%, 100% 100%, 0% 100%, 0% 59%);

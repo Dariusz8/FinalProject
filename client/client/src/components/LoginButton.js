@@ -1,11 +1,11 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Navigate } from 'react-router-dom';
+//import { Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
 const LoginButton = () => {
-    const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+    const { loginWithRedirect, isAuthenticated } = useAuth0();
 
     const handleLogin = async() =>{
         loginWithRedirect();
