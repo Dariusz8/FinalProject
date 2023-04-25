@@ -6,18 +6,24 @@ import { Image } from 'cloudinary-react';
 
 const QuestSelect = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
-    const [background, setBackgroundPic] = useState([]);
+    const [backgroundPic, setBackgroundPic] = useState([]);
 
     useEffect(() => {
-        fetch("/quests")
-        .then((res)=> res.json())
-        .then((resData)=>{
-            setBackgroundPic(resData.data)
-        })
-        .catch((err)=>{
+        const fetchData = async() =>{
+            try{
+                const res = await fetch("/quests");
+                const resData = await res.json(); 
+                await setBackgroundPic(resData.data)
+            } catch(err){
             console.log(err)
-        })
+        }
+    }
+        fetchData();
     }, []);
+    
+    useEffect(() => {
+        console.log(backgroundPic);
+      }, [backgroundPic]);
 
     if (isLoading) return <h2>Loading...</h2>
     
@@ -26,10 +32,16 @@ const QuestSelect = () =>{
     }
 
     return(
-        <div>
-            quests
-        </div>
+        <Wrapper>
+        
+        </Wrapper>
     )
 }
+
+const Wrapper = styled.div`
+background-color: black;
+width: 100vw;
+height: 100vh;
+`
 
 export default QuestSelect;

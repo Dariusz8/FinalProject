@@ -2,11 +2,28 @@ import styled from "styled-components";
 import {Image} from 'cloudinary-react';
 import { NavLink, Navigate } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
-//import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Cockpit from "./Cockpit";
 
 const Space = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
+    const [planets, setPlanets] = useState(null);
+
+    useEffect(() =>{
+        const fetchData = async() =>{
+            try{
+                const res = await fetch("/planets");
+                const resData = await res.json(); 
+                await setPlanets(resData.data)
+            }catch(err){
+                console.log(err);
+            }
+        }
+        fetchData();
+    }, [])
+    useEffect(() => {
+        console.log(planets);
+      }, [planets]);
 
     if (isLoading) return <h2>Loading...</h2>
 

@@ -18,20 +18,27 @@ import { useState, useEffect } from 'react';
 // console.log(result.substring(0, result.length - 1))
 
 const Home = () => {
-    const { isLoading, user, isAuthenticated } = useAuth0();
+    const { isLoading, isAuthenticated } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
 
+  
+
     useEffect(() => {
-      fetch("/homepics")
-      .then((res)=> res.json())
-      .then((resData)=>{
-          setBackgroundPic(resData.data)
-          console.log(backgroundPic);
-      })
-      .catch((err)=>{
-          console.log(err)
-      })
-  }, []);
+      const fetchData = async () => {
+        try {
+          const res = await fetch("/homepics");
+          const resData = await res.json();
+          await setBackgroundPic(resData.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchData();
+    }, []);
+
+    useEffect(() => {
+      console.log(backgroundPic);
+    }, [backgroundPic]);
 
     if (isLoading) return <h2>Loading...</h2>
 
@@ -188,18 +195,11 @@ const RedSpan2 = styled.div`
 
 const HomePicWrapper = styled.div`
 border-radius: 4px;
-/* margin-left: 5px;
-margin-right: 5px; */
 position: relative;
 width: 99vw;
 height: 98vh;
-//top:11vh;
 background: transparent;
 overflow: hidden;
-/* border-top: 1px solid rgba(102, 51, 153, 0.5);
-  border-right: 1px solid rgba(47,249,36, 0.5);
-  border-bottom: 1px solid rgba(235,33,46, 0.5);
-  border-left: 1px solid rgba(46,103,248, 0.5); */
 `
 const HomeTitle = styled.h1`
 color:white;

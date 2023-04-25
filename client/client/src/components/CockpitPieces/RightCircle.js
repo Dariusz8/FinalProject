@@ -28,8 +28,8 @@ justify-content: center;
 align-items: center;
 border: solid rgb(15,15,15) 8px;
 `
-const MyPlane = styled.image`
+const MyPlane = styled.div`
 position: fixed;
-color:limegreen;
+color:white;
 background-color: transparent;
 `

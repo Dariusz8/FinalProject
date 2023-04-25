@@ -3,7 +3,9 @@ import TopRightFrame from "./CockpitPieces/TopRightFrame";
 import TopLeftFrame from "./CockpitPieces/TopLeftFrame";
 import Dash from "./CockpitPieces/Dash";
 import RightCircle from "./CockpitPieces/RightCircle";
+import RightCircleRadar from "./CockpitPieces/RightCircleRadar";
 import LeftCircle from "./CockpitPieces/LeftCircle";
+
 
 const Cockpit = () =>{
 
@@ -11,8 +13,9 @@ const Cockpit = () =>{
         <Wrapper>
         <TopRightFrame/>
         <TopLeftFrame/>
-        <LeftCircle/>
+        <RightCircleRadar/>
         <RightCircle/>
+        <LeftCircle/>
         <Dash/>
         </Wrapper>
     )

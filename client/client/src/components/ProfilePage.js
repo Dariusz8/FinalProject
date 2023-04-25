@@ -7,16 +7,20 @@ const ProfilePage = () => {
     const [backgroundPic, setBackgroundPic] = useState([])
 
     useEffect(() => {
-        fetch("/profilepics")
-        .then((res)=> res.json())
-        .then((resData)=>{
-            setBackgroundPic(resData.data)
-            console.log(backgroundPic);
-        })
-        .catch((err)=>{
+        const fetchData = async() =>{
+            try{
+                const res = await fetch("/profilepics");
+                const resData = await res.json();
+                await setBackgroundPic(resData.data)
+            } catch(err){
             console.log(err)
-        })
+        }
+    }
+    fetchData()
     }, []);
+    useEffect(() => {
+        console.log(backgroundPic);
+      }, [backgroundPic]);
 
     return(
         <Wrapper>
