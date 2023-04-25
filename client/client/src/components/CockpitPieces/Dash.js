@@ -16,7 +16,7 @@ const Dash = () => {
                 <BottomIconButtons><BsReverseListColumnsReverse/></BottomIconButtons>
                 <BottomIconButtons><BsFillPersonVcardFill/></BottomIconButtons>
                 <BottomIconButtons><BsFillRocketTakeoffFill/></BottomIconButtons>
-                <BottomIconButtons><BsFillGearFill/></BottomIconButtons>
+                <BottomIconButtons><NavLinky to={`/profile`}><BsFillGearFill/></NavLinky></BottomIconButtons>
             </BottomIcons>
         </Dashboard>
         </>
@@ -49,4 +49,14 @@ background-color: transparent;
 color: limegreen;
 height:25px;
 width: 35px;
+`
+const NavLinky = styled(NavLink)`
+   text-decoration: none;
+   color: limegreen;
+    &:hover {
+        text-decoration: none;
+    }
+    &.active {
+        color:limegreen;
+    }
 `

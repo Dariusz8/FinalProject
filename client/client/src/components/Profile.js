@@ -3,6 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LogoutButton from './LogoutButton';
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Profile = () => {
     const { user, isAuthenticated } = useAuth0();
@@ -58,16 +59,27 @@ const Profile = () => {
 
     return(
         isAuthenticated && (
-        <div>
-            <img src={user.picture} alt={user.name} />
+        <Wrapper>
+            <img src={user.picture} alt={user.name} styled={{maxHeight:'10%', maxWidth:'10%'}}/>
             <h2>{user.name}</h2>
             <p>{user.email}</p>
-            <button onClick={doUser}> Confirm Launch </button>
-            <LogoutButton/>
-            <button onClick={retireUser}> Retire </button>
-        </div>
+            <AButton><button onClick={doUser}> Confirm Launch </button></AButton>
+            <AButton><LogoutButton/></AButton>
+            <AButton><button onClick={retireUser}> Retire </button></AButton>
+        </Wrapper>
         )
     )
 }
+
+const Wrapper = styled.div`
+color:white;
+display:flex;
+flex-direction: column;
+justify-content:center;` 
+
+const AButton = styled.div`
+text-align: center;
+margin-bottom: 2%;
+`
 
 export default Profile;

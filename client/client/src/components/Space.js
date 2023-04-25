@@ -21,9 +21,9 @@ const Space = () => {
         }
         fetchData();
     }, [])
-    useEffect(() => {
-        console.log(planets);
-      }, [planets]);
+    // useEffect(() => {
+    //     console.log(planets);
+    //   }, [planets]);
 
     if (isLoading) return <h2>Loading...</h2>
 

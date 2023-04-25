@@ -21,9 +21,9 @@ const QuestSelect = () =>{
         fetchData();
     }, []);
     
-    useEffect(() => {
-        console.log(backgroundPic);
-      }, [backgroundPic]);
+    // useEffect(() => {
+    //     console.log(backgroundPic);
+    //   }, [backgroundPic]);
 
     if (isLoading) return <h2>Loading...</h2>
     
