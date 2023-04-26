@@ -24,9 +24,7 @@ const ProfilePage = () => {
 
     return(
         <Wrapper>
-            <Image cloudName="dly85se71" publicId={backgroundPic.url}
-                style={{ height: '100vh', width: '100vw',
-                position: "fixed", zIndex:"-1"}} />
+            <StyledImage cloudName="dly85se71" publicId={backgroundPic.url}/>
             <ProfileWrapper>
                 <Profile/>
             </ProfileWrapper>
@@ -36,11 +34,18 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
+const StyledImage = styled(Image)`
+height:100vh;
+width: 100vw;
+position:fixed;
+z-index:-1;
+`
+
 const Wrapper = styled.div`
 height:100vh;
 width:100vw;
 overflow: hidden;
-margin: 0px;
+margin: none;
 `
 const ProfileWrapper = styled.div`
 background: rgba(255,255,255,0.1);

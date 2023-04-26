@@ -55,6 +55,7 @@ const Profile = () => {
                 'Content-Type': 'application/json'
               }
         })
+        return <Navigate to="/"/>
     }
 
     return(
@@ -80,6 +81,7 @@ justify-content:center;`
 const AButton = styled.div`
 text-align: center;
 margin-bottom: 2%;
+border-radius: 10%;
 `
 
 export default Profile;

@@ -54,12 +54,12 @@ const Home = () => {
 
     return(
         <Wrapper>
-          <Image cloudName="dly85se71" publicId={backgroundPic[currentIndex]?.url}
-                style={{ height: '100vh', width: '100vw', position: "fixed", zIndex:""}} />
+          
           <TitleWrapper>
             <HomeTitle>Yet To Arrive, They Have</HomeTitle>
           </TitleWrapper>
           <HomePicWrapper>
+            <StyledImage cloudName="dly85se71" publicId={backgroundPic[currentIndex]?.url}/>
             <PurpleSpan></PurpleSpan>
             <GreenSpan></GreenSpan>
             <RedSpan></RedSpan>
@@ -74,6 +74,13 @@ const Home = () => {
 }
 
 export default Home;
+
+const StyledImage = styled(Image)`
+height: 100vh;
+width: 100vw;
+position: absolute;
+margin:0px;
+`
 
 const PurpleSpan = styled.div`
 position: absolute;

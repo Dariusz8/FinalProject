@@ -50,6 +50,7 @@ const Wrapper = styled.div`
 position:relative`
 
 const Button = styled.button`
+  font-size: 18px;
 	text-align: center;
 	margin: 0;
 	padding: 1rem;
