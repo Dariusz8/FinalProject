@@ -20,8 +20,7 @@ import { useState, useEffect } from 'react';
 const Home = () => {
     const { isLoading, isAuthenticated } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
-
-  
+    const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
       const fetchData = async () => {
@@ -35,10 +34,17 @@ const Home = () => {
       };
       fetchData();
     }, []);
-
     // useEffect(() => {
     //   console.log(backgroundPic);
     // }, [backgroundPic]);
+    useEffect(()=>{
+      const interval = setInterval(() =>{
+        setCurrentIndex(prevIndex => (prevIndex + 1)% backgroundPic.length)
+      }, 3000)
+      return()=>{
+        clearInterval(interval)
+      }
+    }, [backgroundPic])
 
     if (isLoading) return <h2>Loading...</h2>
 
@@ -48,6 +54,8 @@ const Home = () => {
 
     return(
         <Wrapper>
+          <Image cloudName="dly85se71" publicId={backgroundPic[currentIndex]?.url}
+                style={{ height: '100vh', width: '100vw', position: "fixed", zIndex:""}} />
           <TitleWrapper>
             <HomeTitle>Yet To Arrive, They Have</HomeTitle>
           </TitleWrapper>
