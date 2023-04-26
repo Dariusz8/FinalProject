@@ -7,6 +7,11 @@ import { Image } from 'cloudinary-react';
 const QuestSelect = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
+    const [giveTitle, setGiveTitle] = useState(false);
+
+    const handleHover = () => {
+        setGiveTitle(true);
+    };
 
     useEffect(() => {
         const fetchData = async() =>{
@@ -35,9 +40,21 @@ const QuestSelect = () =>{
             <PicContainer>
             {backgroundPic.map((item) =>{
                 return(
-                    <NavLinky to={`/space`}>
-                    <StyledImage key={item._id} cloudName="dly85se71" publicId={item.url}/>
+                    <>
+                    
+                    <NavLinky key={item._id} to={`/space`}>
+                        
+                    <StyledImage alt="Cover picture of the quests which are possible"
+                        key={item._id} 
+                        cloudName="dly85se71" 
+                        publicId={item.url}
+                        onMouseEnter={handleHover}
+                        onMouseLeave={() => setGiveTitle(false)}/>
+                        
                     </NavLinky>
+                    {giveTitle && <QuestTitle>{item.name}</QuestTitle>
+                        }
+                    </>
                 )
             })
             }
@@ -59,6 +76,14 @@ const StyledImage = styled(Image)`
     }
 `;
 
+const QuestTitle = styled.p`
+position: relative;
+left:-400px;
+top:50vh;
+color:white;
+font-size: 26px;
+z-index: 100;
+`
 
 const PicContainer = styled.div`
 display: flex; 
@@ -69,6 +94,7 @@ width: 100vw;
 overflow-x: scroll;
 overflow-y: hidden; 
 white-space: nowrap;
+background-color: black;
 `
 
 const Wrapper = styled.div`

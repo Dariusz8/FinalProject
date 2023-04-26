@@ -73,6 +73,7 @@ export default Space;
 
 const Wrapper = styled.div`
 margin:0px;
+overflow: hidden;
 `
 
 const AllPlanets = styled.div`

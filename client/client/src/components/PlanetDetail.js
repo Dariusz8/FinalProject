@@ -44,7 +44,7 @@ const PlanetDetail = () => {
 return (
     <div>
          {planetInfo.planet_pics && (
-        <StyledImage cloudName="dly85se71" publicId={planetInfo.planet_pics[currentIndex]} />
+        <StyledImage alt="background picture of the current planet" cloudName="dly85se71" publicId={planetInfo.planet_pics[currentIndex]} />
       )}
         <Cockpit/>
     </div>

@@ -24,7 +24,7 @@ const ProfilePage = () => {
 
     return(
         <Wrapper>
-            <StyledImage cloudName="dly85se71" publicId={backgroundPic.url}/>
+            <StyledImage alt="Picture of a hangar background for the profile and launch page" cloudName="dly85se71" publicId={backgroundPic.url}/>
             <ProfileWrapper>
                 <Profile/>
             </ProfileWrapper>

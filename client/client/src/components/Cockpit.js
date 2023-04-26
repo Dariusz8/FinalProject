@@ -20,9 +20,9 @@ const Cockpit = () =>{
         </Wrapper>
     )
 }
-
-export default Cockpit;
-
 const Wrapper = styled.div`
 z-index:100;
 `
+
+export default Cockpit;
+

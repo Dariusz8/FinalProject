@@ -58,7 +58,7 @@ const Home = () => {
             <HomeTitle>Yet To Arrive, They Have</HomeTitle>
           </TitleWrapper>
           <HomePicWrapper>
-            <StyledImage cloudName="dly85se71" publicId={backgroundPic[currentIndex]?.url}/>
+            <StyledImage alt="cover pictures of future quests to be released" cloudName="dly85se71" publicId={backgroundPic[currentIndex]?.url}/>
             <PurpleSpan></PurpleSpan>
             <GreenSpan></GreenSpan>
             <RedSpan></RedSpan>
