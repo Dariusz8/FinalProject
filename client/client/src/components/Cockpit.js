@@ -23,7 +23,6 @@ const Cockpit = () =>{
 
 export default Cockpit;
 
-
 const Wrapper = styled.div`
 z-index:100;
 `

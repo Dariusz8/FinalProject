@@ -2,23 +2,62 @@ import styled from "styled-components";
 import { useParams,Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react';
+import Cockpit from "./Cockpit";
+import {Image} from "cloudinary-react";
+
+
 
 const PlanetDetail = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
     const {id} = useParams();
-    const [state,setState] = useState(null);
+    const [planetInfo,setPlanetInfo] = useState([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    if (isLoading) return <h2>Loading...</h2>
+    useEffect(()=>{
+        const fetchData = async() =>{
+            try{
+                const res = await fetch(`/${id}`);
+                const resData = await res.json();
+                await setPlanetInfo(resData.data);
+                
+            }catch(err){
+                console.log(err)
+            }
+        };
+        fetchData();
+    }, [])
+
+    useEffect(()=>{
+        const interval = setInterval(() =>{
+          setCurrentIndex(prevIndex => (prevIndex + 1)% planetInfo.planet_pics.length)
+        }, 3000)
+        return()=>{
+            clearInterval(interval);
+        }
+      }, [planetInfo])
+
+    if (!planetInfo) return <h2>Loading...</h2>
 
     if(!isAuthenticated){
         return(<Navigate to="/"/>)
         }
-        
 return (
-    <>
-        <p>He lives</p>
-    </>
+    <div>
+         {planetInfo.planet_pics && (
+        <StyledImage cloudName="dly85se71" publicId={planetInfo.planet_pics[currentIndex]} />
+      )}
+        <Cockpit/>
+    </div>
 )
 }
+
+const StyledImage = styled(Image)`
+width:100vw;
+height:60vh;
+z-index: 1;
+position:fixed;
+top:0px;
+left:0px;
+`
 
 export default PlanetDetail;

@@ -54,7 +54,6 @@ const Home = () => {
 
     return(
         <Wrapper>
-          
           <TitleWrapper>
             <HomeTitle>Yet To Arrive, They Have</HomeTitle>
           </TitleWrapper>
