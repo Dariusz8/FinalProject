@@ -4,6 +4,7 @@ import LoginButton from "./LoginButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import Hyperjump from './Hyperjump';
 
 // Used to get boxshadow input
 // function randomNumber(min, max) {
@@ -46,7 +47,7 @@ const Home = () => {
       }
     }, [backgroundPic])
 
-    if (isLoading) return <h2>Loading...</h2>
+    if (isLoading) return <div><Hyperjump/></div>
 
     if(isAuthenticated){
       return(<Navigate to="/profile"/>)
@@ -260,6 +261,7 @@ height: 30vh;
 position:fixed;
 left:40vw;
 top:10vh;
+z-index: 10;
 `
 
 const Wrapper = styled.div`

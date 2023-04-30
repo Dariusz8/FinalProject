@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useAuth0 } from '@auth0/auth0-react';
 import Cockpit from "./Cockpit";
 import {Image} from "cloudinary-react";
+import Hyperjump from "./Hyperjump";
 
 
 
@@ -35,6 +36,8 @@ const PlanetDetail = () => {
             clearInterval(interval);
         }
       }, [planetInfo])
+
+      if (isLoading) return <div><Hyperjump/></div>
 
     if (!planetInfo) return <h2>Loading...</h2>
 

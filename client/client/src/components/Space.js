@@ -4,6 +4,7 @@ import { NavLink, Navigate } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from "react";
 import Cockpit from "./Cockpit";
+import Hyperjump from "./Hyperjump";
 
 const Space = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
@@ -25,7 +26,7 @@ const Space = () => {
     //     console.log(planets);
     //   }, [planets]);
 
-    if (isLoading) return <h2>Loading...</h2>
+    if (isLoading) return <div><Hyperjump/></div>
 
     if(!isAuthenticated){
         return(<Navigate to="/"/>)

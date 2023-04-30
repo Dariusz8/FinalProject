@@ -3,6 +3,7 @@ import { Navigate, NavLink } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
 import { Image } from 'cloudinary-react';
+import Hyperjump from './Hyperjump';
 
 const QuestSelect = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
@@ -29,7 +30,7 @@ const QuestSelect = () =>{
     //     console.log(backgroundPic);
     //   }, [backgroundPic]);
 
-    if (isLoading) return <h2>Loading...</h2>
+    if (isLoading) return <div><Hyperjump/></div>
     
     if(!isAuthenticated){
         return(<Navigate to="/"/>)
@@ -103,4 +104,9 @@ height: 100vh;
 margin:0px;
 `
 
+const TheHtml= styled.html`
+
+`
+
 export default QuestSelect;
+
