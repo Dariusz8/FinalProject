@@ -28,6 +28,7 @@ const ProfilePage = () => {
             <ProfileWrapper>
                 <Profile/>
             </ProfileWrapper>
+            
         </Wrapper>
     )
 }
@@ -54,7 +55,7 @@ backdrop-filter: blur(13px);
 border: 1px solid rgba(255,255,255,0.075);
 max-width:20vw;
 border-radius: 18%;
-padding:3%;
+padding:5%;
 position: fixed;
 left:6%;
 top:7%;
