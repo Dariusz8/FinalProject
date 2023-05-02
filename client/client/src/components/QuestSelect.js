@@ -9,6 +9,7 @@ const QuestSelect = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
     const [giveTitle, setGiveTitle] = useState(false);
+    const [userChecks, setUserChecks] = useState([]);
 
     const handleHover = () => {
         setGiveTitle(true);
@@ -26,9 +27,20 @@ const QuestSelect = () =>{
     }
         fetchData();
     }, []);
-    // useEffect(() => {
-    //     console.log(backgroundPic);
-    //   }, [backgroundPic]);
+
+    useEffect(() =>{
+        const fetchUser = async() =>{
+            try{
+                const res = await fetch(`/user/${user._id}`);
+                const resData = await res.json();
+                await setUserChecks(resData.data);
+                console.log(resData.data)
+            }catch(err){
+                console.log(err);
+            }
+        }
+        fetchUser()
+    }, [])
 
     if (isLoading) return <div><Hyperjump/></div>
     
@@ -45,8 +57,7 @@ const QuestSelect = () =>{
                     
                     <NavLinky key={item._id} to={`/space`}>
                         
-                    <StyledImage alt="Cover picture of the quests which are possible"
-                        key={item._id} 
+                    <StyledImage alt="Cover picture of the quests which are possible" 
                         cloudName="dly85se71" 
                         publicId={item.url}
                         onMouseEnter={handleHover}
@@ -102,10 +113,6 @@ const Wrapper = styled.div`
 width: 100vw;
 height: 100vh;
 margin:0px;
-`
-
-const TheHtml= styled.html`
-
 `
 
 export default QuestSelect;

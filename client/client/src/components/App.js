@@ -8,8 +8,8 @@ import Space from "./Space";
 const App = () => {
   return (
     <>
-    <BrowserRouter>
-    <Routes>
+    <BrowserRouter >
+    <Routes >
       <Route path="/" element={<Home/>}></Route>
       <Route path="/profile" element={<ProfilePage/>}></Route>
       <Route path="/quests" element={<QuestSelect/>}></Route>

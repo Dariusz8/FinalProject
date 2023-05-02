@@ -14,8 +14,10 @@ const RightCircle = () => {
 
 export default RightCircle;
 
+
+
 const Wrapper = styled.div`
-background-color: rgb(13,13,13);
+background-color: black;
 position: fixed;
 right:10vw;
 top:45vh;

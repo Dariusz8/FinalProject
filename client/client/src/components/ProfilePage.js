@@ -18,9 +18,6 @@ const ProfilePage = () => {
     }
     fetchData()
     }, []);
-    // useEffect(() => {
-    //     console.log(backgroundPic);
-    //   }, [backgroundPic]);
 
     return(
         <Wrapper>

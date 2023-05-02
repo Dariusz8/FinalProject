@@ -1,10 +1,31 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
 const MainScreen = () => {
+    const {id} = useParams();
+    const [planetInfo,setPlanetInfo] = useState([]);
+
+    useEffect(()=>{
+        const fetchPlanetData = async() =>{
+            try{
+                const res = await fetch(`/${id}`);
+                const resData = await res.json();
+                await setPlanetInfo(resData.data);
+            }catch(err){
+                console.log(err)
+            }
+        }
+        fetchPlanetData();
+    }, [id])
 
     return(
         <Wrapper>
-            <ScreenText> for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p elementreact random filler text for p element</ScreenText>
+            {planetInfo.script && (
+            <ScreenText> 
+                {planetInfo.script}
+            </ScreenText>
+            )}
         </Wrapper>
     )
 }

@@ -61,6 +61,7 @@ z-index: 1;
 position:fixed;
 top:0px;
 left:0px;
+margin:0px;
 `
 
 export default PlanetDetail;

@@ -33,8 +33,8 @@ express()
   .use('/', express.static(__dirname + '/'))
 
   // REST endpoints?
-  .get('/planets',getAllPlanets)
   .get('/user/:id', getUser)
+  .get('/planets',getAllPlanets)
   .get('/profilepics', getProfilePictures)
   .get('/homepics', getHomePictures)
   .get('/quests', getQuestPictures)
