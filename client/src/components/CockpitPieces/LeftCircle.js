@@ -1,15 +1,24 @@
 import styled from "styled-components";
+import {BsSpeedometer2} from "react-icons/bs";
 
 const LeftCircle = () => {
 
     return(
         <Wrapper>
             - - - -
+            <SpeedIcon>
+                <BsSpeedometer2/>
+            </SpeedIcon>
         </Wrapper>
     )
 }
 
 export default LeftCircle;
+
+const SpeedIcon = styled.div`
+position:fixed;
+top:59%;
+`
 
 const Wrapper = styled.div`
 background-color: rgb(13,13,13);

@@ -35,31 +35,31 @@ const Space = () => {
     return(
         <Wrapper>
         <AllPlanets>
-            <div>
-                <NavLinky to={`/6436f1ed1575f64893aaad34`}>
+            <Naboo>
+                <NavLinky to={`/naboo`}>
                 <Image id="6436f1ed1575f64893aaad34" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
-            </div>
-            <div>
+            </Naboo>
+            <Tatooine>
                 <NavLinky to={`/6437129f96fe2e99cb9f57a8`}>
                 <Image id="6437129f96fe2e99cb9f57a8" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
-            </div>
-            <div>
+            </Tatooine>
+            <Geonosis>
                 <NavLinky to={`/643711f296fe2e99cb9f57a7`}>
                 <Image id="643711f296fe2e99cb9f57a7" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '100px', width: '100px'}}/>
                 </NavLinky>
-            </div>
-            <div>
+            </Geonosis>
+            <Coruscant>
                 <NavLinky to={`/6436f16c1575f64893aaad33`}>
                 <Image id="6436f16c1575f64893aaad33" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
-            </div>
-            <div>
+            </Coruscant>
+            <Kamino>
                 <NavLinky to={`/6437138561b80f8966d3de7a`}>
                 <Image id="66437138561b80f8966d3de7a" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681598419/planet_geonosis_ir9jus.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
-            </div>
+            </Kamino>
         </AllPlanets>
         <Cockpit/>
         <Box>
@@ -76,6 +76,17 @@ const Wrapper = styled.div`
 margin:0px;
 overflow: hidden;
 `
+const Naboo = styled.div`
+`
+const Tatooine = styled.div`
+`
+const Geonosis = styled.div`
+`
+const Coruscant = styled.div`
+`
+const Kamino = styled.div`
+`
+
 
 const AllPlanets = styled.div`
 display: flex;

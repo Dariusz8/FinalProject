@@ -61,9 +61,9 @@ const Profile = () => {
     return(
         isAuthenticated && (
         <Wrapper>
-            <img src={user.picture} alt={user.name} styled={{maxHeight:'10%', maxWidth:'10%'}}/>
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
+            <UserAccountPic src={user.picture} alt={user.name} styled={{maxHeight:'10%', maxWidth:'10%'}}/>
+            <UserAccountName>{user.name}</UserAccountName>
+            <UserAccountEmail>{user.email}</UserAccountEmail>
             <AButton><button onClick={doUser}> Confirm Launch </button></AButton>
             <AButton><LogoutButton/></AButton>
             <AButton><button onClick={retireUser}> Retire </button></AButton>
@@ -71,6 +71,13 @@ const Profile = () => {
         )
     )
 }
+
+const UserAccountPic = styled.img`
+`
+const UserAccountName = styled.h2`
+`
+const UserAccountEmail = styled.p`
+`
 
 const Wrapper = styled.div`
 color:white;

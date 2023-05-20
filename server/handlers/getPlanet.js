@@ -10,12 +10,14 @@ const ObjectId = require('mongodb').ObjectId
 
 const getPlanet = async(req, res) => {
     const id = req.params.id;
+    console.log(req)
+    console.log(id)
     const client = new MongoClient(MONGO_URI, options)
 
 try{
     await client.connect();
     const db = client.db("starpath");
-    const planet = await db.collection("planets").findOne({ "_id": new ObjectId(id)})
+    const planet = await db.collection("allplanets").findOne({ "_id": new ObjectId(id)})
 
     if(planet){
         res.status(200).send({ status:200, success:true, data:planet});

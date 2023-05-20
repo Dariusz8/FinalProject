@@ -21,7 +21,7 @@ const ProfilePage = () => {
 
     return(
         <Wrapper>
-            <StyledImage alt="Picture of a hangar background for the profile and launch page" cloudName="dly85se71" publicId={backgroundPic.url}/>
+            <StyledImage alt="Picture of a hangar background for the profile and launch page" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1682282756/jonathan-brinkley-isdhangar7-1_udtfiw.jpg"/>
             <ProfileWrapper>
                 <Profile/>
             </ProfileWrapper>

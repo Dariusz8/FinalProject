@@ -3,6 +3,7 @@ import Home from "./Home";
 import PlanetDetail from "./PlanetDetail";
 import ProfilePage from "./ProfilePage";
 import QuestSelect from "./QuestSelect";
+import Naboo from "./Naboo";
 import Space from "./Space";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/quests" element={<QuestSelect/>}></Route>
       <Route path="/space" element={<Space/>}></Route>
       <Route path="/:id" element={<PlanetDetail/>}></Route>
+      <Route path="/naboo" element={<Naboo/>}></Route>
     </Routes>
     </BrowserRouter>
     </>

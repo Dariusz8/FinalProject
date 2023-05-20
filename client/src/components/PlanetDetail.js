@@ -33,6 +33,7 @@ const PlanetDetail = () => {
           setCurrentIndex(prevIndex => (prevIndex + 1)% planetInfo.planet_pics.length)
         }, 3000)
         return()=>{
+            
             clearInterval(interval);
         }
       }, [planetInfo])

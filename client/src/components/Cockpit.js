@@ -7,6 +7,7 @@ import RightCircleRadar from "./CockpitPieces/RightCircleRadar";
 import LeftCircle from "./CockpitPieces/LeftCircle";
 
 
+
 const Cockpit = () =>{
 
     return(

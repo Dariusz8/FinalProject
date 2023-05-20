@@ -12,7 +12,7 @@ const getAllPlanets = async(req, res) => {
     try{
         client.connect();
         const db = client.db("starpath");
-        const data = await db.collection("planets").find({}).toArray();
+        const data = await db.collection("allplanets").find({}).toArray();
         
     data.length > 0
     ? res.status(200).send({ status: 200, success: true, data: data })
