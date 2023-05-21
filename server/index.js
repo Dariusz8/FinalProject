@@ -33,13 +33,13 @@ express()
   .use('/', express.static(__dirname + '/'))
 
   // REST endpoints?
-  .get('/user/:id', getUser)
+  .get('/user/:email', getUser)
   .get('/planets',getAllPlanets)
   .get('/profilepics', getProfilePictures)
   .get('/homepics', getHomePictures)
   .get('/quests', getQuestPictures)
   .get('/:id', getPlanet)
-  .delete('/:id', deleteUser)
+  .delete('/:email', deleteUser)
   .post('/user', postUser)
   .patch('/user', patchUser)
 

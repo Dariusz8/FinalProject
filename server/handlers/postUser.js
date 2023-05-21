@@ -27,7 +27,7 @@ const postUser = async(req, res) =>{
         return res.status(202).json({ status:202, success:true, data:result})
     }
     }catch(err){
-        console.log(err)
+        console.log(err.message)
     }finally{
         client.close();
     }

@@ -6,32 +6,10 @@ import { Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Hyperjump from './Hyperjump';
 
-// Used to get boxshadow input for stars
-// function randomNumber(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1)) + min
-// }
-// const STAR_COUNT = 100
-// let result = ""
-// for(let i = 0; i < STAR_COUNT; i++){
-//     result += `${randomNumber(-50, 50)}vw ${randomNumber(-50, 50)}vh ${randomNumber(0, 3)}px ${randomNumber(0, 3)}px #fff,`
-// }
-// console.log(result.substring(0, result.length - 1))
-
 const Home = () => {
     const { isLoading, isAuthenticated } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const ManHomePics = [
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682219898/wUYTfFbfPiZC6Lcyt1nonr69ZmK_sspedy.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682219778/1113726_uaodwr.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682220361/wp2095579_zhejmb.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682468170/Zqnx2I_vy1ldu.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682883520/wc1738449_k1aglc.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682883771/778941_katuij.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682884112/876547_s28zni.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682884199/solo_tall-ratios_6eef8fff_ftyejg.jpg",
-      "https://res.cloudinary.com/dly85se71/image/upload/v1682884276/ECwHeziVUAMmprr.0_w3rg6v.jpg"
-    ]
 
     useEffect(() => {
       const fetchData = async () => {
@@ -41,7 +19,7 @@ const Home = () => {
           console.log(resData)
           setBackgroundPic(resData.data);
         } catch (err) {
-          console.log(err);
+          console.log(err.message);
         }
       };
       fetchData();
@@ -51,12 +29,12 @@ const Home = () => {
     // }, [backgroundPic]);
     useEffect(()=>{
       const interval = setInterval(() =>{
-        setCurrentIndex(prevIndex => (prevIndex + 1)% ManHomePics.length)
+        setCurrentIndex(prevIndex => (prevIndex + 1)% backgroundPic.length)
       }, 3000)
       return()=>{
         clearInterval(interval)
       }
-    }, [])
+    }, [backgroundPic])
 
     if (isLoading) return <div><Hyperjump/></div>
 
@@ -70,7 +48,7 @@ const Home = () => {
             <HomeTitle>Yet To Arrive, They Have</HomeTitle>
           </TitleWrapper>
           <HomePicWrapper>
-            <StyledImage alt="cover pictures of future quests to be released" cloudName="dly85se71" publicId={ManHomePics[currentIndex]}/>
+            <StyledImage alt="cover pictures of future quests to be released" cloudName="dly85se71" publicId={backgroundPic[currentIndex]?.url}/>
             <PurpleSpan></PurpleSpan>
             <GreenSpan></GreenSpan>
             <RedSpan></RedSpan>

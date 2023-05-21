@@ -157,6 +157,7 @@ z-index:100000;
 const R2Button = styled.button`
 background-color:transparent;
 color:limegreen;
+border-radius: 6px;
 `
 
 const SubmitButton = styled.button`
@@ -176,26 +177,22 @@ margin-right: 1%;
 const ScriptButton = styled.button`
 background-color: transparent;
 color: limegreen;
-height:25px;
-width: 35px;
+font-size: 30px;
 `
 const ResidentButton = styled.button`
 background-color: transparent;
 color: limegreen;
-height:25px;
-width: 35px;
+font-size: 30px;
 `
 const AdvanceButton = styled.button`
 background-color: transparent;
 color: limegreen;
-height:25px;
-width: 35px;
+font-size: 30px;
 `
 const ProfileButton = styled.button`
+font-size: 30px;
 background-color: transparent;
 color: limegreen;
-height:25px;
-width: 35px;
 `
 
 const NavLinky = styled(NavLink)`
@@ -212,8 +209,8 @@ const NavLinky = styled(NavLink)`
 const BottomIcons = styled.div`
 display: flex;
 position: fixed;
-bottom: 5vh;
-left: 35vw;
+bottom: 2vh;
+left: 34vw;
 gap: 20px;
 width: 30vw;
 justify-content: space-around;

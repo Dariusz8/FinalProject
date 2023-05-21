@@ -8,13 +8,13 @@ const options = {
 const ObjectId = require('mongodb').ObjectId
 
 const getUser = async(req, res) => {
-    const id = req.params.id;
+    const {email} = req.params;
     const client = new MongoClient(MONGO_URI, options)
 
     try{
         await client.connect();
         const db = client.db("starpath");
-        const user = await db.collection("users").findOne({ "_id": new ObjectId(id)})
+        const user = await db.collection("users").findOne({ "email": email})
 
         if(user){
             res.status(200).json({ status:200, success:true, data:"The force is strong with this one", user})
@@ -23,7 +23,7 @@ const getUser = async(req, res) => {
         }
 
     }catch(err){
-        console.log(err);
+        console.log(err.message);
     }finally{
         client.close();
     }

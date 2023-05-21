@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { BsAirplaneFill } from "react-icons/bs";
+import { GiSpaceship } from "react-icons/gi";
 
 const RightCircle = () => {
 
     return(
         <Wrapper>
             <MyPlane>
-                <BsAirplaneFill/>
+                <GiSpaceship/>
             </MyPlane>
         </Wrapper>
     )
@@ -30,7 +30,8 @@ justify-content: center;
 align-items: center;
 border: solid rgb(15,15,15) 8px;
 `
-const MyPlane = styled.div`
+const MyPlane = styled.p`
+font-size: 70px;
 position: fixed;
 color:white;
 background-color: transparent;

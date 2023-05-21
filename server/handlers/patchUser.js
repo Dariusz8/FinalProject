@@ -30,7 +30,7 @@ const patchUser = async(req, res) =>{
             res.status(404).json( {status:404, success: false, data:"I have a bad feeling about this"})
         }
     }catch(err){
-        console.log(err)
+        console.log(err.message)
     }finally{
         client.close();
     }

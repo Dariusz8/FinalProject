@@ -14,7 +14,6 @@ const QuestSelect = () =>{
     const handleHover = () => {
         setGiveTitle(true);
     };
-
     useEffect(() => {
         const fetchData = async() =>{
             try{
@@ -31,7 +30,7 @@ const QuestSelect = () =>{
     useEffect(() =>{
         const fetchUser = async() =>{
             try{
-                const res = await fetch(`/user/${user._id}`);
+                const res = await fetch(`/user/${user.email}`);
                 const resData = await res.json();
                 await setUserChecks(resData.data);
                 console.log(resData.data)
@@ -45,7 +44,7 @@ const QuestSelect = () =>{
     if (isLoading) return <div><Hyperjump/></div>
     
     if(!isAuthenticated){
-        return(<Navigate to="/"/>)
+        (<Navigate to="/"/>)
     }
 
     return(

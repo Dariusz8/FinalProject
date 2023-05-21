@@ -2,9 +2,12 @@ import Profile from "./Profile";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { Image } from 'cloudinary-react';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Navigate } from 'react-router-dom';
 
 const ProfilePage = () => {
-    const [backgroundPic, setBackgroundPic] = useState("")
+    const [backgroundPic, setBackgroundPic] = useState("");
+    const { isAuthenticated } = useAuth0();
 
     useEffect(() => {
         const fetchData = async() =>{
@@ -13,19 +16,22 @@ const ProfilePage = () => {
                 const resData = await res.json();
                 await setBackgroundPic(resData.data[0])
             } catch(err){
-            console.log(err)
+            console.log(err.message)
         }
     }
     fetchData()
     }, []);
 
+    if(!isAuthenticated){
+        return(<Navigate to="/"/>)
+    }
+
     return(
         <Wrapper>
-            <StyledImage alt="Picture of a hangar background for the profile and launch page" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1682282756/jonathan-brinkley-isdhangar7-1_udtfiw.jpg"/>
+            <StyledImage alt="Picture of a hangar background for the profile and launch page" cloudName="dly85se71" publicId={backgroundPic.url}/>
             <ProfileWrapper>
                 <Profile/>
             </ProfileWrapper>
-            
         </Wrapper>
     )
 }

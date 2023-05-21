@@ -10,8 +10,7 @@ const ObjectId = require('mongodb').ObjectId
 
 const getPlanet = async(req, res) => {
     const id = req.params.id;
-    console.log(req)
-    console.log(id)
+    
     const client = new MongoClient(MONGO_URI, options)
 
 try{
@@ -25,7 +24,7 @@ try{
         res.status(404).send({ status: 404, success: false, data:"Planet not found"})
     }
 } catch(err){
-    console.log(err);
+    console.log(err.message);
 }finally{
     client.close();
 }

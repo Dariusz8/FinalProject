@@ -9,20 +9,31 @@ import {BsFuelPumpFill} from "react-icons/bs";
 import {GiBubbleField} from "react-icons/gi";
 import {RxDoubleArrowUp} from "react-icons/rx";
 import {RxDoubleArrowDown} from "react-icons/rx";
+import {MdSignalWifiStatusbar4Bar} from "react-icons/md";
+import {MdSignalWifiStatusbar3Bar} from "react-icons/md";
+import {MdSignalWifiStatusbar2Bar} from "react-icons/md";
+import {MdSignalWifiStatusbar1Bar} from "react-icons/md";
+import {MdSignalWifiStatusbarNull} from "react-icons/md";
+import {GiMissileSwarm} from "react-icons/gi";
+import {GiTurret} from "react-icons/gi";
+import {GiEclipseFlare} from "react-icons/gi";
 import { useState } from "react";
 
 
 const Dash = () => {
     const [gasLevel, setGasLevel] = useState(88);
     const [oxygenLevel, setOxygenLevel] = useState(94);
+    const [sheildLevel, setSheildLevel] = useState(100);
 
     return(
     <>
         <Dashboard>
             <MainScreen/>
-            <AboveScreen>
-                <BsLungs/>  {oxygenLevel}%
-            </AboveScreen>
+            <OxygenStatus>
+                <div>
+                    <LungIcon><BsLungs/></LungIcon>   {oxygenLevel} %
+                </div>
+            </OxygenStatus>
             <HeadingIndicator>
                 <HeadingTop>
                     <HeadingCharacters>12</HeadingCharacters>
@@ -58,10 +69,27 @@ const Dash = () => {
                 <FiMicOff/>
             </MicIcons>
             <PlaneSheild>
-                <RxDoubleArrowUp/>
-                <GiBubbleField/>
-                <RxDoubleArrowDown/>
+                <SheildPerc>
+                    {sheildLevel} %
+                </SheildPerc>
+                <PlaneSheildIcons>
+                    <TopSheildButton><RxDoubleArrowUp/></TopSheildButton>
+                    <GiBubbleField/>
+                    <BotSheildButton><RxDoubleArrowDown/></BotSheildButton>
+                </PlaneSheildIcons>
             </PlaneSheild>
+            <FireControls>
+                <FireOptions>
+                    <FireIcon><GiMissileSwarm/></FireIcon>
+                    <FireIcon><GiTurret/></FireIcon>
+                    <FireIcon><GiEclipseFlare/></FireIcon>
+                </FireOptions>
+                <OptionsStatus>
+                    <OptionsStatusIcon><MdSignalWifiStatusbar3Bar/></OptionsStatusIcon>
+                    <OptionsStatusIcon><MdSignalWifiStatusbar4Bar/></OptionsStatusIcon>
+                    <OptionsStatusIcon><MdSignalWifiStatusbar4Bar/></OptionsStatusIcon>
+                </OptionsStatus>
+            </FireControls>
         </Dashboard>
     </>
     )
@@ -69,14 +97,69 @@ const Dash = () => {
 
 export default Dash
 
+const FireOptions = styled.div`
+display: flex;
+flex-direction: column;
+`
+const OptionsStatus = styled.div`
+display: flex;
+flex-direction: column;
+`
+const OptionsStatusIcon = styled.p`
+font-size: 23px;
+`
+const FireIcon = styled.p`
+font-size: 30px;
+`
+const FireControls = styled.div`
+border: solid red 1px;
+color:limegreen;
+position: fixed;
+right:5vw;
+top:67vh;
+width:25vw;
+height: 30vh;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+`
+const LungIcon = styled.p`
+font-size: 24;
+`
+
+const TopSheildButton = styled.button`
+background-color: transparent;
+border:none;
+color:limegreen;
+right:5px;
+position: relative;
+`
+const BotSheildButton = styled.button`
+background-color: transparent;
+border:none;
+color:limegreen;
+right:5px;
+top:2px;
+position: relative;
+`
+
+const SheildPerc = styled.p`
+display: flex;
+flex-direction: row;
+`
+const PlaneSheildIcons = styled.div`
+display:flex;
+flex-direction:column;
+margin-left:5px;`
+
 const PlaneSheild = styled.div`
 color:limegreen;
 display: flex;
-flex-direction: column;
+flex-direction: row;
 justify-content: space-evenly;
 position:fixed;
-right:28%;
-top:60%;
+right:27%;
+top:59%;
 `
 
 const HeadingCharacters = styled.p`
@@ -129,6 +212,8 @@ animation: leftRightTop 8s ease-in-out infinite;
 }
 `
 const HeadingIndicator = styled.div`
+border:solid black 2px;
+border-radius: 4px;
 color:limegreen;
 display: flex;
 flex-direction: column;
@@ -176,12 +261,12 @@ right:35%;
 top:53%;
 `
 
-const AboveScreen = styled.div`
+const OxygenStatus = styled.div`
 color:limegreen;
 z-index: 1;
 position: fixed;
-left:35%;
-bottom:41%;
+left:26%;
+bottom:30%;
 `
 
 const Dashboard = styled.div`

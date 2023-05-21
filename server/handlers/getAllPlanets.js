@@ -12,7 +12,7 @@ const getAllPlanets = async(req, res) => {
     try{
         client.connect();
         const db = client.db("starpath");
-        const data = await db.collection("allplanets").find({}).toArray();
+        const data = await db.collection("allplanets").find().toArray();
         
     data.length > 0
     ? res.status(200).send({ status: 200, success: true, data: data })
@@ -20,7 +20,7 @@ const getAllPlanets = async(req, res) => {
         .status(404)
         .send({ status: 404, success: false, data: "Planets not found" });
 } catch (err) {
-  console.log(err);
+  console.log(err.message);
 } finally {
   client.close();
 }

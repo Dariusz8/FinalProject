@@ -10,13 +10,13 @@ const Profile = () => {
     const [ready, setReady] = useState(false);
 
     useEffect(() =>{
-        fetch(`/user/${user._id}`)
+        fetch(`/user/${user.email}`)
             .then((res)=>res.json())
             .then((parsedUserRes)=>{
                 console.log(parsedUserRes.data)
             })
             .catch((err)=>{
-                console.log("error getting use", err)
+                console.log(err.message)
             })
             return () =>{
             }
@@ -49,7 +49,7 @@ const Profile = () => {
     }
 
     const retireUser = async(req, res) => {
-        await fetch(`/${user._id}`,{
+        await fetch(`/${user.email}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

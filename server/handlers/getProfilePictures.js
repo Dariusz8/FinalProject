@@ -12,13 +12,13 @@ const getProfilePictures = async(req, res) => {
     try{
         client.connect();
         const db = client.db("starpath");
-        const data = await db.collection("profilepictures").find({}).toArray();
+        const data = await db.collection("profilepictures").find().toArray();
 
         data.length > 0
         ? res.status(200).send({ status: 200, success:true, data:data})
         : res.stauts(404).send({ status:404, success:false, data: "Profile pictures were not found"})
     }catch(err){
-        console.log(err);
+        console.log(err.message);
     }finally{
         client.close();
     }
