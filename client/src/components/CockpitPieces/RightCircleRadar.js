@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import { GiSpaceship } from "react-icons/gi";
 
 const RightCircleRadar = () => {
 
     return(
+    <>
         <Wrapper>
-            
         </Wrapper>
+        <MyPlane>
+            <GiSpaceship/>
+        </MyPlane>
+    </>
     )
 }
 
@@ -31,4 +36,14 @@ animation: radar-spinner 5s infinite linear;
         transform: rotate(1turn);
     }
 }
+`
+const MyPlane = styled.p`
+font-size: 70px;
+position: fixed;
+right:15vw;
+top:45vh;
+color:white;
+background-color: transparent;
+z-index: 10000;
+
 `

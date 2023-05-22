@@ -24,15 +24,16 @@ const Dash = () => {
     const [gasLevel, setGasLevel] = useState(88);
     const [oxygenLevel, setOxygenLevel] = useState(94);
     const [sheildLevel, setSheildLevel] = useState(100);
+    const [topButtonClicked, setTopButtonClicked] = useState(false);
+    const [bottomButtonClicked, setBottomButtonClicked] = useState(false);
 
     return(
     <>
         <Dashboard>
             <MainScreen/>
             <OxygenStatus>
-                <div>
-                    <LungIcon><BsLungs/></LungIcon>   {oxygenLevel} %
-                </div>
+                    <LungIcon><BsLungs/></LungIcon>   
+                    {oxygenLevel} %
             </OxygenStatus>
             <HeadingIndicator>
                 <HeadingTop>
@@ -56,10 +57,10 @@ const Dash = () => {
                     <HeadingLines>|</HeadingLines><HeadingLines>|</HeadingLines>
                 </HeadingBottom>
             </HeadingIndicator>
-            <FuelIcon>
-                <BsFuelPumpFill/>
+            <FuelStatus>
+                <FuelIcon><BsFuelPumpFill/></FuelIcon>
                 {gasLevel} %
-            </FuelIcon>
+            </FuelStatus>
             <PhoneIcons>
                 <FiPhoneCall/>
                 <FiPhoneMissed/>
@@ -73,9 +74,9 @@ const Dash = () => {
                     {sheildLevel} %
                 </SheildPerc>
                 <PlaneSheildIcons>
-                    <TopSheildButton><RxDoubleArrowUp/></TopSheildButton>
-                    <GiBubbleField/>
-                    <BotSheildButton><RxDoubleArrowDown/></BotSheildButton>
+                    <TopSheildButton onClick={() => setTopButtonClicked(!topButtonClicked)}><RxDoubleArrowUp/></TopSheildButton>
+                    <PlaneSheildIcon><GiBubbleField/></PlaneSheildIcon>
+                    <BotSheildButton onClick={() => setBottomButtonClicked(!bottomButtonClicked)}><RxDoubleArrowDown/></BotSheildButton>
                 </PlaneSheildIcons>
             </PlaneSheild>
             <FireControls>
@@ -87,7 +88,7 @@ const Dash = () => {
                 <OptionsStatus>
                     <OptionsStatusIcon><MdSignalWifiStatusbar3Bar/></OptionsStatusIcon>
                     <OptionsStatusIcon><MdSignalWifiStatusbar4Bar/></OptionsStatusIcon>
-                    <OptionsStatusIcon><MdSignalWifiStatusbar4Bar/></OptionsStatusIcon>
+                    <OptionsStatusIcon><MdSignalWifiStatusbar1Bar/></OptionsStatusIcon>
                 </OptionsStatus>
             </FireControls>
         </Dashboard>
@@ -106,46 +107,62 @@ display: flex;
 flex-direction: column;
 `
 const OptionsStatusIcon = styled.p`
-font-size: 23px;
+margin-top:0px;
+font-size: 35px;
 `
 const FireIcon = styled.p`
-font-size: 30px;
+margin-top:0px;
+font-size: 35px;
 `
 const FireControls = styled.div`
-border: solid red 1px;
 color:limegreen;
 position: fixed;
 right:5vw;
-top:67vh;
-width:25vw;
-height: 30vh;
+top:73vh;
+width:28vw;
+height: 20vh;
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 `
 const LungIcon = styled.p`
-font-size: 24;
+font-size: 24px;
+position: relative;
+bottom:4vh;
 `
+const OxygenStatus = styled.div`
+color:limegreen;
+z-index: 1;
+position: fixed;
+left:26%;
+bottom:30%;
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+width:60px;
+height:40px;
 
+`
+const PlaneSheildIcon = styled.p`
+margin:0px;
+font-size: 30px;
+`
 const TopSheildButton = styled.button`
+color: ${topButtonClicked => topButtonClicked.isActive ? "blue" : "limegreen"};
 background-color: transparent;
 border:none;
-color:limegreen;
-right:5px;
 position: relative;
 `
 const BotSheildButton = styled.button`
+color: ${bottomButtonClicked => bottomButtonClicked.isActive ? 'blue' : 'limegreen'};
 background-color: transparent;
 border:none;
-color:limegreen;
-right:5px;
-top:2px;
 position: relative;
 `
-
 const SheildPerc = styled.p`
 display: flex;
 flex-direction: row;
+margin-bottom: 4vh;
 `
 const PlaneSheildIcons = styled.div`
 display:flex;
@@ -161,7 +178,6 @@ position:fixed;
 right:27%;
 top:59%;
 `
-
 const HeadingCharacters = styled.p`
 `
 const HeadingLines = styled.p`
@@ -226,8 +242,7 @@ position: fixed;
 top:52%;
 left:40%;
 `
-
-const FuelIcon = styled.div`
+const FuelStatus = styled.div`
 color:limegreen;
 display: flex;
 flex-direction: row;
@@ -238,7 +253,11 @@ position:fixed;
 left:26%;
 top:60%;
 `
-
+const FuelIcon = styled.p`
+font-size: 24px;
+position: relative;
+bottom:4vh;
+`
 const PhoneIcons = styled.div`
 color:limegreen;
 display: flex;
@@ -260,15 +279,6 @@ position:fixed;
 right:35%;
 top:53%;
 `
-
-const OxygenStatus = styled.div`
-color:limegreen;
-z-index: 1;
-position: fixed;
-left:26%;
-bottom:30%;
-`
-
 const Dashboard = styled.div`
 clip-path: polygon(31% 50%, 64% 50%, 100% 59%, 100% 100%, 0% 100%, 0% 59%);
 position: fixed;

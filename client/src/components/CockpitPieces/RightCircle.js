@@ -5,9 +5,7 @@ const RightCircle = () => {
 
     return(
         <Wrapper>
-            <MyPlane>
-                <GiSpaceship/>
-            </MyPlane>
+           
         </Wrapper>
     )
 }
@@ -29,10 +27,4 @@ display: flex;
 justify-content: center;
 align-items: center;
 border: solid rgb(15,15,15) 8px;
-`
-const MyPlane = styled.p`
-font-size: 70px;
-position: fixed;
-color:white;
-background-color: transparent;
 `

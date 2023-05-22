@@ -18,7 +18,7 @@ const patchUser = async(req, res) =>{
         await client.connect();
         const db = client.db("starpath");
         const result = await db.collection("users")
-        .updateOne({ _id:theUser._id }, { $set: theUser })
+        .updateOne({ name:theUser.name }, { $set: theUser })
 
         if(result.modifiedCount ===1){
             res.status(202).json({ status:202, success:true, data: "There has been an awakening. Have you felt it?"})

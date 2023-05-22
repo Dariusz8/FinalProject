@@ -9,7 +9,7 @@ const QuestSelect = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
     const [giveTitle, setGiveTitle] = useState(false);
-    const [userChecks, setUserChecks] = useState([]);
+    // const [userChecks, setUserChecks] = useState([]);
 
     const handleHover = () => {
         setGiveTitle(true);
@@ -27,19 +27,19 @@ const QuestSelect = () =>{
         fetchData();
     }, []);
 
-    useEffect(() =>{
-        const fetchUser = async() =>{
-            try{
-                const res = await fetch(`/user/${user.email}`);
-                const resData = await res.json();
-                await setUserChecks(resData.data);
-                console.log(resData.data)
-            }catch(err){
-                console.log(err);
-            }
-        }
-        fetchUser()
-    }, [])
+    // useEffect(() =>{
+    //     const fetchUser = async() =>{
+    //         try{
+    //             const res = await fetch(`/user/${user.email}`);
+    //             const resData = await res.json();
+    //             await setUserChecks(resData.data);
+    //             console.log(resData.data)
+    //         }catch(err){
+    //             console.log(err);
+    //         }
+    //     }
+    //     fetchUser()
+    // }, [])
 
     if (isLoading) return <div><Hyperjump/></div>
     
@@ -54,14 +54,13 @@ const QuestSelect = () =>{
                 return(
                     <>
                     
-                    <NavLinky key={item._id} to={`/space`}>
+                    <NavLinky key={item._id} to={item.code}>
                         
                     <StyledImage alt="Cover picture of the quests which are possible" 
                         cloudName="dly85se71" 
                         publicId={item.url}
                         onMouseEnter={handleHover}
                         onMouseLeave={() => setGiveTitle(false)}/>
-                        
                     </NavLinky>
                     {giveTitle && <QuestTitle>{item.name}</QuestTitle>
                         }
@@ -78,7 +77,6 @@ const NavLinky = styled(NavLink)`
 text-decoration: none;
 display: contents;
 `
-
 const StyledImage = styled(Image)`
     transition: transform 1s ease-in-out;
     &:hover {
@@ -95,7 +93,6 @@ color:white;
 font-size: 26px;
 z-index: 100;
 `
-
 const PicContainer = styled.div`
 display: flex; 
 flex-direction: row;
@@ -107,12 +104,10 @@ overflow-y: hidden;
 white-space: nowrap;
 background-color: black;
 `
-
 const Wrapper = styled.div`
 width: 100vw;
 height: 100vh;
 margin:0px;
 `
-
 export default QuestSelect;
 
