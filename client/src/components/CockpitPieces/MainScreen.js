@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate} from "react-router-dom";
 import { BsFillPersonVcardFill } from "react-icons/bs";
 import { BsReverseListColumnsReverse } from "react-icons/bs";
 import { BsFillRocketTakeoffFill } from "react-icons/bs"
@@ -10,63 +10,49 @@ import {Image} from "cloudinary-react";
 
 const MainScreen = () => {
     const {id} = useParams();
-    const [planetInfo,setPlanetInfo] = useState([]);
-    const [Script, SetScript] = useState(true);
-    const [Residents, SetResidents] = useState(false);
-    const [Advance, SetAdvance] = useState(false);
-    const [r2d2, setR2d2] = useState(false);
+    const [script, setScript] = useState(true);
+    const [residents, setResidents] = useState(false);
+    const [advance, setAdvance] = useState(false);
+    const [oneCharacter, setOneCharacter] = useState(false);
     const [userAnswer, setUserAnswer] = useState("");
     const [qAnswer, setQAnswer] = useState("gungan")
     const [redirectToSpace, setRedirectToSpace] = useState(false);
-    const residentInfo = 
-        {
-        name: "R2-D2",
-        height: "96",
-        mass: "32",
-        hair_color: "n/a",
-        skin_color: "white, blue",
-        eye_color: "red",
-        birth_year: "33BBY",
-        gender: "n/a",
-        homeworld: "naboo",
-        films: ["A New Hope","The Empire Strikes Back",
-        "Return of the Jedi",
-        "The Phantom Menace",
-        "Attack of the Clones",
-        "Revenge of the Sith"],
-        picture_url: "https://res.cloudinary.com/dly85se71/image/upload/v1683932300/R2D2_fewoic.png"
+    const [allCharacters, setAllCharacters] = useState([])
+    
+    useEffect(()=>{
+        const fetchCharacterData = async() =>{
+            try{
+                const res = await fetch(`/allcharacters`);
+                const resData = await res.json();
+                await setAllCharacters(resData.data);
+                console.log(resData.data)
+            }catch(err){
+                console.log(err.message)
+            }
         }
-    // useEffect(()=>{
-    //     const fetchPlanetData = async() =>{
-    //         try{
-    //             const res = await fetch(`/${id}`);
-    //             const resData = await res.json();
-    //             await setPlanetInfo(resData.data);
-    //         }catch(err){
-    //             console.log(err)
-    //         }
-    //     }
-    //     fetchPlanetData();
-    // }, [id])
+        fetchCharacterData();
+        
+    }, [])
 
     const handleScriptButtonClick = () => {
-        SetResidents(false);
-        SetAdvance(false);
-        setR2d2(false);
-        SetScript(true);
+        setResidents(false);
+        setAdvance(false);
+        setOneCharacter(false);
+        setScript(true);
       };
 
       const handleResidentsButtonClick = () =>{
-        SetAdvance(false);
-        SetScript(false);
-        SetResidents(true);
+        setOneCharacter(false);
+        setAdvance(false);
+        setScript(false);
+        setResidents(true);
       }
 
       const handleAdvanceButtonClick = () =>{
-        SetResidents(false);
-        SetScript(false);
-        setR2d2(false);
-        SetAdvance(true);
+        setResidents(false);
+        setScript(false);
+        setOneCharacter(false);
+        setAdvance(true);
       }
 
       const handleAnswerInputChange = (event) => {
@@ -82,47 +68,54 @@ const MainScreen = () => {
         }
       };
 
-      const handler2d2 = () => {
-        SetResidents(false);
-        setR2d2(!r2d2);
-        console.log("r2d2 hit")
+      const handleCharacters = (character) => {
+        setResidents(false);
+        setOneCharacter(character);
       }
 
     return(
         <Wrapper>
             {
-                Script && (
+                script && (
                 <ScreenText> 
                     Darth Sidious orders the trade federation to invade Naboo, after blocking all trades coming in and out from the planet. The galactic republic's Supreme Chancellor dispatches Jedi Master Qui-Gon Jinn and his apprentice, Obi-Wan Kenobi to resolve the matter.
                     The Jedis rescue Jar Jar Binks whom leads them to the Gungan people underwater at the core of the planet. They ask the Gungans to help the surface dwellers from the droid attack. The trio reach the surface and rescue Queen Amidala and her escort. They try attempt to flee to the republic's capital planet, Corusant.
                 </ScreenText>
             )}
             {
-                Residents && (
+                residents && (
                     <ScreenText>
-                        <R2Button onClick={handler2d2}>{residentInfo.name}</R2Button>
+                        {allCharacters.map(item => {
+                            return(
+                            <CharacterButton key={item._id} onClick={() => handleCharacters(item)}>
+                                {item.name}
+                            </CharacterButton>
+                            )
+                        })
+                        }
+                        
                     </ScreenText>
             )}
             {
-                r2d2 && (
+                oneCharacter && (
                     <>
                     <ScreenText>
-                        <div>Name:{residentInfo.name}</div>
-                        <div>Height:{residentInfo.height}</div>
-                        <div>Mass:{residentInfo.mass}</div>
-                        <div>Gender:{residentInfo.gender}</div>
-                        <div>Hair color:{residentInfo.hair_color}</div>
-                        <div>Skin color:{residentInfo.skin_color}</div>
-                        <div>Eye color:{residentInfo.eye_color}</div>
-                        <div>Birth Year:{residentInfo.birth_year}</div>
-                        <div>Homeworld:{residentInfo.homeworld}</div>
+                        <div>Name:{oneCharacter.name}</div>
+                        <div>Height:{oneCharacter.height}</div>
+                        <div>Mass:{oneCharacter.mass}</div>
+                        <div>Gender:{oneCharacter.gender}</div>
+                        <div>Hair color:{oneCharacter.hair_color}</div>
+                        <div>Skin color:{oneCharacter.skin_color}</div>
+                        <div>Eye color:{oneCharacter.eye_color}</div>
+                        <div>Birth Year:{oneCharacter.birth_year}</div>
+                        <div>Homeworld:{oneCharacter.homeworld}</div>
                     </ScreenText>
-                    <StyledImage cloudName="dly85se71" publicId={residentInfo.picture_url} />
+                    <StyledImage cloudName="dly85se71" publicId={oneCharacter.picture_url} />
                     </>
                 )
             }
             {
-                Advance && (
+                advance && (
                     <>
                     <ScreenText>
                     What species is Jar Jar Binks?
@@ -138,7 +131,7 @@ const MainScreen = () => {
                 <AdvanceButton onClick={handleAdvanceButtonClick}><BsFillRocketTakeoffFill/></AdvanceButton>
                 <ProfileButton><NavLinky to={`/profile`}><BsFillGearFill/></NavLinky></ProfileButton>
             </BottomIcons>
-            {redirectToSpace && <Navigate to="/space" />}
+            {redirectToSpace && <Navigate to={-1} />}
         </Wrapper>
     )
 }
@@ -154,7 +147,7 @@ height:230px;
 z-index:100000;
 `
 
-const R2Button = styled.button`
+const CharacterButton = styled.button`
 background-color:transparent;
 color:limegreen;
 border-radius: 6px;

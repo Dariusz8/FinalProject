@@ -11,6 +11,7 @@ const { postUser } = require('./handlers/postUser');
 const { getHomePictures } = require('./handlers/getHomePictures');
 const { getQuestPictures } = require('./handlers/getQuestPictures');
 const { getProfilePictures } = require('./handlers/getProfilePictures');
+const { getAllCharacters } = require('./handlers/getAllCharacters');
 
 const PORT = 8000;
 
@@ -34,7 +35,8 @@ express()
 
   // REST endpoints?
   .get('/user/:email', getUser)
-  .get('/planets',getAllPlanets)
+  .get('/planets', getAllPlanets)
+  .get('/allcharacters', getAllCharacters)
   .get('/profilepics', getProfilePictures)
   .get('/homepics', getHomePictures)
   .get('/quests', getQuestPictures)
