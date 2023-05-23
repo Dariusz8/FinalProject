@@ -9,6 +9,7 @@ import Hyperjump from "./Hyperjump";
 const Episode2 = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
+    const [checkProg, setCheckProg] = useState(null);
 
     useEffect(() =>{
         const fetchData = async() =>{
@@ -22,6 +23,20 @@ const Episode2 = () => {
         }
         fetchData();
     }, [])
+
+    useEffect(() =>{
+        const fetchUserData = async() =>{
+            try{
+                const res = await fetch(`/user/${user.email}`);
+                const resData = await res.json(); 
+                await setCheckProg(resData)
+                //console.log("profileChecker", resData)
+            }catch(err){
+                console.log(err.message);
+            }
+        }
+        fetchUserData();
+    }, [isAuthenticated])
     // useEffect(() => {
     //     console.log(planets);
     //   }, [planets]);

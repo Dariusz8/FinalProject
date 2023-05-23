@@ -9,7 +9,7 @@ const ObjectId = require('mongodb').ObjectId
 
 const patchUser = async(req, res) =>{
     const theUser = req.body;
-    if (!(theUser._id instanceof ObjectId)) {
+    if (!(theUser.email )) {
         theUser._id = new ObjectId(theUser._id);
       }
     const client = new MongoClient(MONGO_URI, options)
@@ -18,7 +18,7 @@ const patchUser = async(req, res) =>{
         await client.connect();
         const db = client.db("starpath");
         const result = await db.collection("users")
-        .updateOne({ name:theUser.name }, { $set: theUser })
+        .updateOne({ email:theUser.email }, { $set: theUser })
 
         if(result.modifiedCount ===1){
             res.status(202).json({ status:202, success:true, data: "There has been an awakening. Have you felt it?"})
