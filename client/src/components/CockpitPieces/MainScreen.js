@@ -25,7 +25,7 @@ const MainScreen = () => {
                 const res = await fetch(`/allcharacters`);
                 const resData = await res.json();
                 await setAllCharacters(resData.data);
-                console.log(resData.data)
+                //console.log(resData.data)
             }catch(err){
                 console.log(err.message)
             }

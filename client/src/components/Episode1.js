@@ -10,6 +10,9 @@ const Episode1 = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
     const [checkProg, setCheckProg] = useState(null);
+    const [checkNaboo, setCheckNaboo] = useState(false);
+    const [checkTatooine, setCheckTatooine] = useState(false);
+    const [checkNaboo2, setCheckNaboo2] = useState(false);
 
     useEffect(() =>{
         const fetchData = async() =>{
@@ -17,6 +20,7 @@ const Episode1 = () => {
                 const res = await fetch("/planets");
                 const resData = await res.json(); 
                 await setPlanets(resData.data)
+                console.log(resData.data, "PLANETS");
             }catch(err){
                 console.log(err.message);
             }
@@ -29,8 +33,9 @@ const Episode1 = () => {
             try{
                 const res = await fetch(`/user/${user.email}`);
                 const resData = await res.json(); 
-                await setCheckProg(resData)
-                //console.log("profileChecker", resData)
+                await setCheckProg(resData.data)
+                console.log("profileChecker", resData.data)
+                //console.log(resData.data.email)
             }catch(err){
                 console.log(err.message);
             }
@@ -38,43 +43,48 @@ const Episode1 = () => {
         fetchUserData();
     }, [isAuthenticated])
     // useEffect(() => {
-    //     console.log(planets);
-    //   }, [planets]);
+    //     console.log("TESTYY",checkProg.email);
+    //   }, [checkProg]);
 
     if (isLoading) return <div><Hyperjump/></div>
 
     if(!isAuthenticated){
         return(<Navigate to="/"/>)
         }
+    
+    // if(checkProg.naboo === "true"){
+    //     setCheckNaboo(true);
+    // }
 
     return(
         <Wrapper>
         <AllPlanets>
             <Naboo>
-                <NavLinky to={`/naboo`}>
-                <Image id="6436f1ed1575f64893aaad34" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
+                <NavLinky to={`/6452f0dfd2268a22085e418f`}>
+                <Image id="6452f0dfd2268a22085e418f" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
             </Naboo>
-            <Tatooine>
-                <NavLinky to={`/6437129f96fe2e99cb9f57a8`}>
-                <Image id="6437129f96fe2e99cb9f57a8" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
+            {checkNaboo && (
+                <Tatooine>
+                <NavLinky to={`/6452f117d2268a22085e4190`}>
+                <Image id="6452f117d2268a22085e4190" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
             </Tatooine>
-            <Geonosis>
-                <NavLinky to={`/643711f296fe2e99cb9f57a7`}>
-                <Image id="643711f296fe2e99cb9f57a7" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '100px', width: '100px'}}/>
+            )}
+            {checkTatooine && (
+                <Naboo2>
+                <NavLinky to={`/6452f18ed2268a22085e4193`}>
+                <Image id="6452f18ed2268a22085e4193" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
-            </Geonosis>
-            <Coruscant>
-                <NavLinky to={`/6436f16c1575f64893aaad33`}>
-                <Image id="6436f16c1575f64893aaad33" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
+            </Naboo2>
+            )}
+            {checkNaboo2 && (
+                <Coruscant>
+                <NavLinky to={`/6452f1b7d2268a22085e4194`}>
+                <Image id="6452f1b7d2268a22085e4194" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '90px', width: '90px'}}/>
                 </NavLinky>
             </Coruscant>
-            <Kamino>
-                <NavLinky to={`/6437138561b80f8966d3de7a`}>
-                <Image id="66437138561b80f8966d3de7a" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681598419/planet_geonosis_ir9jus.png" style={{height: '90px', width: '90px'}}/>
-                </NavLinky>
-            </Kamino>
+            )}
         </AllPlanets>
         <Cockpit/>
         <Box>
@@ -90,19 +100,18 @@ export default Episode1;
 const Wrapper = styled.div`
 margin:0px;
 overflow: hidden;
+width: 100vw;
+height: 100vh;
+background-color: black;
 `
 const Naboo = styled.div`
 `
-const Tatooine = styled.div`
+const Naboo2 = styled.div`
 `
-const Geonosis = styled.div`
+const Tatooine = styled.div`
 `
 const Coruscant = styled.div`
 `
-const Kamino = styled.div`
-`
-
-
 const AllPlanets = styled.div`
 display: flex;
 position:absolute;

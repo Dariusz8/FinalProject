@@ -22,7 +22,7 @@ const PlanetDetail = () => {
                 await setPlanetInfo(resData.data);
                 
             }catch(err){
-                console.log(err)
+                console.log(err.message)
             }
         };
         fetchData();
