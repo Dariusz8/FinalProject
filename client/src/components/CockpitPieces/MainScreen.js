@@ -18,6 +18,7 @@ const MainScreen = () => {
     const [qAnswer, setQAnswer] = useState("gungan")
     const [redirectToSpace, setRedirectToSpace] = useState(false);
     const [allCharacters, setAllCharacters] = useState([])
+    const [planetInfo, setPlanetInfo] = useState([])
     
     useEffect(()=>{
         const fetchCharacterData = async() =>{
@@ -32,6 +33,19 @@ const MainScreen = () => {
         }
         fetchCharacterData();
         
+    }, [])
+
+    useEffect(()=>{
+        const fetchData = async() =>{
+            try{
+                const res = await fetch(`/${id}`);
+                const resData = await res.json();
+                await setPlanetInfo(resData.data);
+            }catch(err){
+                console.log(err.message)
+            }
+        };
+        fetchData();
     }, [])
 
     const handleScriptButtonClick = () => {
@@ -60,7 +74,7 @@ const MainScreen = () => {
       };
 
       const handleAnswerSubmit = () => {
-        if (userAnswer.toLowerCase() === qAnswer.toLowerCase()) {
+        if (userAnswer.toLowerCase() === planetInfo.answer.toLowerCase()) {
             setRedirectToSpace(true);
         
         } else {
@@ -78,8 +92,7 @@ const MainScreen = () => {
             {
                 script && (
                 <ScreenText> 
-                    Darth Sidious orders the trade federation to invade Naboo, after blocking all trades coming in and out from the planet. The galactic republic's Supreme Chancellor dispatches Jedi Master Qui-Gon Jinn and his apprentice, Obi-Wan Kenobi to resolve the matter.
-                    The Jedis rescue Jar Jar Binks whom leads them to the Gungan people underwater at the core of the planet. They ask the Gungans to help the surface dwellers from the droid attack. The trio reach the surface and rescue Queen Amidala and her escort. They try attempt to flee to the republic's capital planet, Corusant.
+                    {planetInfo.script}
                 </ScreenText>
             )}
             {
@@ -118,7 +131,7 @@ const MainScreen = () => {
                 advance && (
                     <>
                     <ScreenText>
-                    What species is Jar Jar Binks?
+                    {planetInfo.question}
                     </ScreenText>
                         <AnswerInput value={userAnswer} onChange={handleAnswerInputChange} />
                         <SubmitButton onClick={handleAnswerSubmit}>Verify</SubmitButton>

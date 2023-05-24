@@ -10,7 +10,7 @@ const Episode1 = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
     const [checkProg, setCheckProg] = useState(null);
-    const [checkNaboo, setCheckNaboo] = useState(false);
+    const [checkNaboo, setCheckNaboo] = useState(true);
     const [checkTatooine, setCheckTatooine] = useState(false);
     const [checkNaboo2, setCheckNaboo2] = useState(false);
 
