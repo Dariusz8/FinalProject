@@ -5,7 +5,7 @@ const Hyperjump = () => {
 
     return(
         <>
-            <StyledImage alt="loading screen displaying a hyperspeed jump through space" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1682616701/warp-space_ozdzsb.gif" ></StyledImage>
+            <StyledImage alt="loading screen displaying a hyperspeed jump through space" cloudName="dly85se71" publicId="https://media.tenor.com/VdZJbPtJrfYAAAAC/light-speed.gif" ></StyledImage>
         </>
     )
 }

@@ -7,18 +7,20 @@ import { BsFillRocketTakeoffFill } from "react-icons/bs"
 import { BsFillGearFill } from "react-icons/bs"
 import { NavLink } from "react-router-dom";
 import {Image} from "cloudinary-react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const MainScreen = () => {
     const {id} = useParams();
+    const { isAuthenticated, user } = useAuth0();
     const [script, setScript] = useState(true);
     const [residents, setResidents] = useState(false);
     const [advance, setAdvance] = useState(false);
     const [oneCharacter, setOneCharacter] = useState(false);
     const [userAnswer, setUserAnswer] = useState("");
-    const [qAnswer, setQAnswer] = useState("gungan")
     const [redirectToSpace, setRedirectToSpace] = useState(false);
-    const [allCharacters, setAllCharacters] = useState([])
-    const [planetInfo, setPlanetInfo] = useState([])
+    const [allCharacters, setAllCharacters] = useState([]);
+    const [planetInfo, setPlanetInfo] = useState([]);
+    const [checkProg, setCheckProg] = useState([]);
     
     useEffect(()=>{
         const fetchCharacterData = async() =>{
@@ -48,6 +50,8 @@ const MainScreen = () => {
         fetchData();
     }, [])
 
+
+
     const handleScriptButtonClick = () => {
         setResidents(false);
         setAdvance(false);
@@ -73,9 +77,48 @@ const MainScreen = () => {
         setUserAnswer(event.target.value);
       };
 
+      useEffect(() =>{
+        const fetchUserData = async() =>{
+            try{
+                const res = await fetch(`/user/${user.email}`);
+                const resData = await res.json(); 
+                await setCheckProg(resData.data)
+                //console.log("profileChecker", resData.data)
+                //console.log(resData.data.email)
+            }catch(err){
+                console.log(err.message);
+            }
+        }
+        fetchUserData();
+    }, [isAuthenticated])
+
+    const updatedUser = { 
+        "email":`${checkProg.email}`,
+        [planetInfo.name]: "true"};
+
+    const handlePatchUser = async () => {
+        try {
+        const response = await fetch("/user", {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedUser)
+        });
+        if (response.ok) {
+            console.log("Patched up")
+        } else {
+            console.log("Patch failed :(")
+        }
+        } catch (error) {
+        console.log(error.message);
+        }
+      };
+
       const handleAnswerSubmit = () => {
         if (userAnswer.toLowerCase() === planetInfo.answer.toLowerCase()) {
             setRedirectToSpace(true);
+            handlePatchUser();
         
         } else {
           console.log("Answer is incorrect");
