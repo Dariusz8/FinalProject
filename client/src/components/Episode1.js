@@ -45,7 +45,6 @@ const Episode1 = () => {
         }
         fetchUserData();
         return() =>{
-
         }
     }, [isAuthenticated])
 
