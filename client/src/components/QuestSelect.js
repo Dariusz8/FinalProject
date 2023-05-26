@@ -6,7 +6,7 @@ import { Image } from 'cloudinary-react';
 import Hyperjump from './Hyperjump';
 
 const QuestSelect = () =>{
-    const { user, isAuthenticated, isLoading } = useAuth0();
+    const { isAuthenticated, isLoading } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
     const [giveTitle, setGiveTitle] = useState(false);
     // const [userChecks, setUserChecks] = useState([]);
@@ -27,20 +27,6 @@ const QuestSelect = () =>{
         fetchData();
     }, []);
 
-    // useEffect(() =>{
-    //     const fetchUser = async() =>{
-    //         try{
-    //             const res = await fetch(`/user/${user.email}`);
-    //             const resData = await res.json();
-    //             await setUserChecks(resData.data);
-    //             console.log(resData.data)
-    //         }catch(err){
-    //             console.log(err);
-    //         }
-    //     }
-    //     fetchUser()
-    // }, [])
-
     if (isLoading) return <div><Hyperjump/></div>
     
     if(!isAuthenticated){
@@ -56,7 +42,7 @@ const QuestSelect = () =>{
                     
                     <NavLinky key={item._id} to={item.code}>
                         
-                    <StyledImage alt="Cover picture of the quests which are possible" 
+                    <StyledImage key={item._id} alt="Cover picture of the quests which are possible" 
                         cloudName="dly85se71" 
                         publicId={item.url}
                         onMouseEnter={handleHover}

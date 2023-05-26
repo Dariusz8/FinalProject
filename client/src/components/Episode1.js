@@ -9,8 +9,8 @@ import Hyperjump from "./Hyperjump";
 const Episode1 = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
-    const [checkProg, setCheckProg] = useState(null);
-    const [checkNaboo, setCheckNaboo] = useState(true);
+    const [checkProg, setCheckProg] = useState([]);
+    const [checkNaboo, setCheckNaboo] = useState(false);
     const [checkTatooine, setCheckTatooine] = useState(false);
     const [checkNaboo2, setCheckNaboo2] = useState(false);
 
@@ -20,12 +20,15 @@ const Episode1 = () => {
                 const res = await fetch("/planets");
                 const resData = await res.json(); 
                 await setPlanets(resData.data)
-                console.log(resData.data, "PLANETS");
+                //console.log(resData.data, "PLANETS");
             }catch(err){
                 console.log(err.message);
             }
         }
         fetchData();
+        return() =>{
+            
+        }
     }, [])
 
     useEffect(() =>{
@@ -41,20 +44,45 @@ const Episode1 = () => {
             }
         }
         fetchUserData();
+        return() =>{
+
+        }
     }, [isAuthenticated])
-    // useEffect(() => {
-    //     console.log("TESTYY",checkProg.email);
-    //   }, [checkProg]);
+
+    // if(checkProg.naboo === "true"){
+    //     setCheckNaboo(true);
+    // }
+
+    useEffect(() =>{
+        if(checkProg.naboo === "true"){
+        setCheckNaboo(true);
+    }
+    return() =>{
+    }
+    }, [checkProg])
+
+    useEffect(() =>{
+        if(checkProg.tatooine === "true"){
+        setCheckTatooine(true);
+    }
+    return() =>{
+    }
+    }, [checkProg])
+
+    useEffect(() =>{
+        if(checkProg.naboo2 === "true"){
+        setCheckTatooine(true);
+    }
+    return() =>{
+    }
+    }, [checkProg])
+    
 
     if (isLoading) return <div><Hyperjump/></div>
 
     if(!isAuthenticated){
         return(<Navigate to="/"/>)
         }
-    
-    // if(checkProg.naboo === "true"){
-    //     setCheckNaboo(true);
-    // }
 
     return(
         <Wrapper>
