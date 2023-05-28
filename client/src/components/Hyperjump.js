@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Image} from 'cloudinary-react';
+import Cockpit from "./Cockpit";
 
 const Hyperjump = () => {
 

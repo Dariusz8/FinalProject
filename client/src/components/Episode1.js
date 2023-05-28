@@ -20,7 +20,6 @@ const Episode1 = () => {
                 const res = await fetch("/planets");
                 const resData = await res.json(); 
                 await setPlanets(resData.data)
-                //console.log(resData.data, "PLANETS");
             }catch(err){
                 console.log(err.message);
             }
@@ -37,8 +36,6 @@ const Episode1 = () => {
                 const res = await fetch(`/user/${user.email}`);
                 const resData = await res.json(); 
                 await setCheckProg(resData.data)
-                //console.log("profileChecker", resData.data)
-                //console.log(resData.data.email)
             }catch(err){
                 console.log(err.message);
             }
@@ -47,10 +44,6 @@ const Episode1 = () => {
         return() =>{
         }
     }, [isAuthenticated])
-
-    // if(checkProg.naboo === "true"){
-    //     setCheckNaboo(true);
-    // }
 
     useEffect(() =>{
         if(checkProg.naboo === "true"){

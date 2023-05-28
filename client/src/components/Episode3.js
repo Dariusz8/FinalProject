@@ -6,59 +6,10 @@ import { useEffect, useState } from "react";
 import Cockpit from "./Cockpit";
 import Hyperjump from "./Hyperjump";
 
-const Episode2 = () => {
+const Episode3 = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
     const [checkProg, setCheckProg] = useState([]);
-    const [checkKamino, setcheckKamino] = useState(false);
-    const [checkGeonosis, setCheckGeonosis] = useState(false);
-
-    useEffect(() =>{
-        const fetchData = async() =>{
-            try{
-                const res = await fetch("/planets");
-                const resData = await res.json(); 
-                await setPlanets(resData.data)
-            }catch(err){
-                console.log(err.message);
-            }
-        }
-        fetchData();
-        return() =>{
-        }
-    }, [])
-
-    useEffect(() =>{
-        const fetchUserData = async() =>{
-            try{
-                const res = await fetch(`/user/${user.email}`);
-                const resData = await res.json(); 
-                await setCheckProg(resData.data)
-                //console.log("profileChecker", resData)
-            }catch(err){
-                console.log(err.message);
-            }
-        }
-        fetchUserData();
-        return() =>{
-        }
-    }, [isAuthenticated])
-
-    useEffect(() =>{
-        if(checkProg.kamino === "true"){
-        setcheckKamino(true);
-    }
-    return() =>{
-    }
-    }, [checkProg])
-
-    useEffect(() =>{
-        if(checkProg.geonosis === "true"){
-        setCheckGeonosis(true);
-    }
-    return() =>{
-    }
-    }, [checkProg])
 
     if (isLoading) return <div><Hyperjump/></div>
 
@@ -68,28 +19,9 @@ const Episode2 = () => {
 
     return(
         <Wrapper>
-        <AllPlanets>
-            <Kamino>
-                <NavLinky to={`/6452f1e7d2268a22085e4195`}>
-                <Image id="6452f1e7d2268a22085e4195" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680996027/pngaaa.com-1494112_dat2te.png" style={{height: '90px', width: '90px'}}/>
-                </NavLinky>
-            </Kamino>
-            {checkKamino && (
-                <Geonosis>
-                <NavLinky to={`/6452f208d2268a22085e4196`}>
-                <Image id="6452f208d2268a22085e4196" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681598419/planet_geonosis_ir9jus.png" style={{height: '90px', width: '90px'}}/>
-                </NavLinky>
-            </Geonosis>
-            )}
-            {checkGeonosis && (
-                <Naboo3>
-                <NavLinky to={`/6452f230d2268a22085e4197`}>
-                <Image id="6452f230d2268a22085e4197" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
-                </NavLinky>
-            </Naboo3>
-            )
-            }
-        </AllPlanets>
+            <AllPlanets>
+
+            </AllPlanets>
         <Cockpit/>
         <Box>
         <Stargazing>
@@ -99,17 +31,14 @@ const Episode2 = () => {
     )
 }
 
-export default Episode2;
+export default Episode3;
 
 const Wrapper = styled.div`
 margin:0px;
 overflow: hidden;
-`
-const Naboo3 = styled.div`
-`
-const Geonosis = styled.div`
-`
-const Kamino = styled.div`
+width: 100vw;
+height: 100vh;
+background-color: black;
 `
 const AllPlanets = styled.div`
 display: flex;
