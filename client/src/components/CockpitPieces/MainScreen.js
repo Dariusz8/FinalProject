@@ -198,8 +198,8 @@ const StyledImage = styled(Image)`
 position:fixed;
 left: 700px;
 bottom:100px;
-width:230px;
-height:230px;
+width:220px;
+height:210px;
 z-index:100000;
 `
 
@@ -212,6 +212,9 @@ border-radius: 6px;
 const SubmitButton = styled.button`
 background-color:transparent;
 color:limegreen;
+&:hover {
+    cursor: pointer;
+    }
 `
 
 const AnswerInput = styled.input`
@@ -227,16 +230,25 @@ const ScriptButton = styled.button`
 background-color: transparent;
 color: limegreen;
 font-size: 30px;
+&:hover {
+        cursor: pointer;
+    }
 `
 const ResidentButton = styled.button`
 background-color: transparent;
 color: limegreen;
 font-size: 30px;
+&:hover {
+    cursor: pointer;
+    }
 `
 const AdvanceButton = styled.button`
 background-color: transparent;
 color: limegreen;
 font-size: 30px;
+&:hover {
+    cursor: pointer;
+    }
 `
 const ProfileButton = styled.button`
 font-size: 30px;
