@@ -34,7 +34,6 @@ const Episode2 = () => {
                 const res = await fetch(`/user/${user.email}`);
                 const resData = await res.json(); 
                 await setCheckProg(resData.data)
-                //console.log("profileChecker", resData)
             }catch(err){
                 console.log(err.message);
             }

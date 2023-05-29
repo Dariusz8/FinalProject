@@ -19,7 +19,6 @@ const SpeedIcon = styled.div`
 position:fixed;
 top:59%;
 `
-
 const Wrapper = styled.div`
 background-color: rgb(13,13,13);
 position: fixed;

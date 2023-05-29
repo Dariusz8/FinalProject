@@ -24,9 +24,7 @@ const Home = () => {
       };
       fetchData();
     }, []);
-    // useEffect(() => {
-    //   console.log(backgroundPic);
-    // }, [backgroundPic]);
+
     useEffect(()=>{
       const interval = setInterval(() =>{
         setCurrentIndex(prevIndex => (prevIndex + 1)% backgroundPic.length)
@@ -70,7 +68,6 @@ width: 100vw;
 position: absolute;
 margin:0px;
 `
-
 const PurpleSpan = styled.div`
 position: absolute;
 border-radius: 100vmax;
@@ -195,8 +192,7 @@ const RedSpan2 = styled.div`
       opacity: 0;
     }
   }
-`;
-
+`
 const HomePicWrapper = styled.div`
 border-radius: 4px;
 position: relative;
@@ -243,7 +239,6 @@ transform: skewX(0deg);
   }
 }
 `
-
 const TitleWrapper = styled.div`
 width:80vw;
 height: 30vh;
@@ -252,7 +247,6 @@ left:40vw;
 top:10vh;
 z-index: 10;
 `
-
 const Wrapper = styled.div`
 width: 100vw;
 height: 100vh;
@@ -260,10 +254,9 @@ background-color: black;
 margin: 0px;
 overflow: hidden;
 `
-
 const LogStuff = styled.div`
   position: absolute;
   left: 50%;
   bottom: 10vh;
   transform: translateX(-50%); 
-`;
+`

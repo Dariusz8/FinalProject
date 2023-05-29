@@ -27,9 +27,9 @@ const Profile = () => {
         return(<Navigate to="/quests"/>)
     }
 
-    if(!isAuthenticated){
-        return(<Navigate to="/"/>)
-    }
+    // if(!isAuthenticated){
+    //     return(<Navigate to="/"/>)
+    // }
 
     const doUser = async() =>{
         await setReady(true);

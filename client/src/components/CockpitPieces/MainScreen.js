@@ -28,7 +28,6 @@ const MainScreen = () => {
                 const res = await fetch(`/allcharacters`);
                 const resData = await res.json();
                 await setAllCharacters(resData.data);
-                //console.log(resData.data)
             }catch(err){
                 console.log(err.message)
             }
@@ -49,8 +48,6 @@ const MainScreen = () => {
         };
         fetchData();
     }, [])
-
-
 
     const handleScriptButtonClick = () => {
         setResidents(false);
@@ -83,8 +80,6 @@ const MainScreen = () => {
                 const res = await fetch(`/user/${user.email}`);
                 const resData = await res.json(); 
                 await setCheckProg(resData.data)
-                //console.log("profileChecker", resData.data)
-                //console.log(resData.data.email)
             }catch(err){
                 console.log(err.message);
             }
@@ -202,13 +197,11 @@ width:220px;
 height:210px;
 z-index:100000;
 `
-
 const CharacterButton = styled.button`
 background-color:transparent;
 color:limegreen;
 border-radius: 6px;
 `
-
 const SubmitButton = styled.button`
 background-color:transparent;
 color:limegreen;
@@ -216,7 +209,6 @@ color:limegreen;
     cursor: pointer;
     }
 `
-
 const AnswerInput = styled.input`
 border:transparent;
 background-color: transparent;
@@ -225,7 +217,6 @@ margin-top: 2%;
 margin-left:5%;
 margin-right: 1%;
 `
-
 const ScriptButton = styled.button`
 background-color: transparent;
 color: limegreen;
@@ -255,7 +246,6 @@ font-size: 30px;
 background-color: transparent;
 color: limegreen;
 `
-
 const NavLinky = styled(NavLink)`
    text-decoration: none;
    color: limegreen;
@@ -266,7 +256,6 @@ const NavLinky = styled(NavLink)`
         color:limegreen;
     }
 `
-
 const BottomIcons = styled.div`
 display: flex;
 position: fixed;
@@ -276,7 +265,6 @@ gap: 20px;
 width: 30vw;
 justify-content: space-around;
 `
-
 const Wrapper = styled.div`
 position: fixed;
 border: solid 8px rgb(10,10,10);
@@ -298,7 +286,6 @@ height: 30vh;
 border-radius:6px;
 overflow: scroll;
 `
-
 const ScreenText = styled.p`
 color: rgb(43,255,0);
 padding-left:1vw;

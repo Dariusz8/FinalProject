@@ -26,7 +26,6 @@ const Episode1 = () => {
         }
         fetchData();
         return() =>{
-            
         }
     }, [])
 
@@ -45,6 +44,7 @@ const Episode1 = () => {
         }
     }, [isAuthenticated])
 
+    //planets condition for rendering
     useEffect(() =>{
         if(checkProg.naboo === "true"){
         setCheckNaboo(true);

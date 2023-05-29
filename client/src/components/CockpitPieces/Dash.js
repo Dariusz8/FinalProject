@@ -141,7 +141,6 @@ flex-direction: row;
 justify-content: space-between;
 width:60px;
 height:40px;
-
 `
 const PlaneSheildIcon = styled.p`
 margin:0px;
@@ -167,8 +166,8 @@ margin-bottom: 4vh;
 const PlaneSheildIcons = styled.div`
 display:flex;
 flex-direction:column;
-margin-left:5px;`
-
+margin-left:5px;
+`
 const PlaneSheild = styled.div`
 color:limegreen;
 display: flex;

@@ -9,7 +9,6 @@ const QuestSelect = () =>{
     const { isAuthenticated, isLoading } = useAuth0();
     const [backgroundPic, setBackgroundPic] = useState([]);
     const [giveTitle, setGiveTitle] = useState(false);
-    // const [userChecks, setUserChecks] = useState([]);
 
     const handleHover = () => {
         setGiveTitle(true);
@@ -21,7 +20,7 @@ const QuestSelect = () =>{
                 const resData = await res.json(); 
                 await setBackgroundPic(resData.data)
             } catch(err){
-            console.log(err)
+            console.log(err.message)
         }
     }
         fetchData();
@@ -69,8 +68,7 @@ const StyledImage = styled(Image)`
         transform: scale(1.1);
         border: 2% solid transparent;
     }
-`;
-
+`
 const QuestTitle = styled.p`
 position: relative;
 left:-400px;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import {Image} from 'cloudinary-react';
-import Cockpit from "./Cockpit";
 
 const Hyperjump = () => {
 
@@ -19,5 +18,4 @@ margin:0px;
 background-color: black;
 overflow: hidden;
 `
-
 export default Hyperjump;

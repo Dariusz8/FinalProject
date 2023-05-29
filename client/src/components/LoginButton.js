@@ -9,24 +9,7 @@ const LoginButton = () => {
 
     const handleLogin = async() =>{
         loginWithRedirect();
-        // fetch('/user',{
-        //     method: 'POST',
-        //     headers:{
-        //         'Content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         _id:user._id,
-        //             email:user.email,
-        //             name: user.name,
-        //             picture: user.picture,
-        //             Joined: user.updated_at
-        //     })
-        // })
     }
-
-    // if(isAuthenticated){
-    //     return(<Navigate to="/profile"/>)
-    // }
 
     return(
         !isAuthenticated && (
@@ -47,8 +30,8 @@ const LoginButton = () => {
 export default LoginButton;
 
 const Wrapper = styled.div`
-position:relative`
-
+position:relative;
+`
 const Button = styled.button`
   font-size: 18px;
 	text-align: center;

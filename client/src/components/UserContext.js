@@ -1,3 +1,4 @@
+//in case decide to use a UserContext
 import { useState, useEffect, createContext } from "react";
 
 export const UserContext = createContext();

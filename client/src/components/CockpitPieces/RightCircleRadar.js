@@ -45,5 +45,4 @@ top:45vh;
 color:white;
 background-color: transparent;
 z-index: 10000;
-
 `
