@@ -204,38 +204,38 @@ overflow: hidden;
 const HomeTitle = styled.h1`
 color:white;
 letter-spacing: 3px;
-animation: shifty 3s ease-in-out infinite alternate;
+animation: shifty 4s linear infinite alternate;
 transform: skewX(0deg);
 @keyframes shifty{
-  0%, 20%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% {
+  0%, 20%, 40%, 50%, 65%, 75%, 100% {
     transform: skewX(0deg);
   }
+  10% {
+    transform: skewY(3deg);
+  }
   15% {
-    transform: skewY(2deg);
+    transform: skewY(-3deg);
   }
-  25% {
-    transform: skewX(-6deg);
+  30% {
+    transform: skewX(-3deg);
   }
-  41% {
-    transform: skewX(8deg);
+  43% {
+    transform: skewX(3deg);
   }
-  42%{
-    transform: skewX(-9deg);
+  44%{
+    transform: skewX(-3deg);
   }
-  59%{
-    transform: skewX(-3deg) skewY(5deg);
+  55%{
+    transform: skewX(-3deg);
   }
   60%{
     transform:skewY(2deg)
   }
-  63%{
-    transform: skewY(-4deg);
-  }
   70%{
-    transform: skewX(-2deg) skewY(1deg);
+    transform: skewX(2deg) skewY(-1deg);
   }
   80%{
-    transform: skewX(3deg);
+    transform: skewX(5deg);
   }
 }
 `

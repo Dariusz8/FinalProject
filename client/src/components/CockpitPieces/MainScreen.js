@@ -152,8 +152,8 @@ const MainScreen = () => {
                     <>
                     <ScreenText>
                         <div>Name:{oneCharacter.name}</div>
-                        <div>Height:{oneCharacter.height}</div>
-                        <div>Mass:{oneCharacter.mass}</div>
+                        <div>Height:{oneCharacter.height}cm</div>
+                        <div>Mass:{oneCharacter.mass}kg</div>
                         <div>Gender:{oneCharacter.gender}</div>
                         <div>Hair color:{oneCharacter.hair_color}</div>
                         <div>Skin color:{oneCharacter.skin_color}</div>
