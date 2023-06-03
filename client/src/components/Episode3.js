@@ -10,17 +10,213 @@ const Episode3 = () =>{
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
     const [checkProg, setCheckProg] = useState([]);
+    const [checkCoruscant2, setCheckCoruscant2] = useState(false);
+    const [checkKashyyyk, setCheckKashyyyk] = useState(false);
+    const [checkUtapau, setCheckUtapau] = useState(false);
+    const [checkCoruscant3, setCheckCoruscant3] = useState(false);
+    const [checkMustafar, setCheckMustafar] = useState(false);
+    const [checkPolisMassa, setCheckPolisMassa] = useState(false);
+    const [checkCoruscant4, setCheckCoruscant4] = useState(false);
+    const [checkNaboo4, setCheckNaboo4] = useState(false);
+    const [checkAlderaan, setCheckAlderaan] = useState(false);
 
-    if (isLoading) return <div><Hyperjump/></div>
 
-    if(!isAuthenticated){
-        return(<Navigate to="/"/>)
+        useEffect(() =>{
+            const fetchData = async() =>{
+                try{
+                    const res = await fetch("/planets");
+                    const resData = await res.json(); 
+                    await setPlanets(resData.data)
+                }catch(err){
+                    console.log(err.message);
+                }
+            }
+            fetchData();
+            return() =>{
+            }
+        }, [])
+    
+        useEffect(() =>{
+            const fetchUserData = async() =>{
+                try{
+                    const res = await fetch(`/user/${user.email}`);
+                    const resData = await res.json(); 
+                    await setCheckProg(resData.data)
+                }catch(err){
+                    console.log(err.message);
+                }
+            }
+            fetchUserData();
+            return() =>{
+            }
+        }, [isAuthenticated])
+
+        useEffect(() =>{
+            if(checkProg.coruscant2 === "true"){
+            setCheckCoruscant2(true);
         }
+        return() =>{
+        }
+        }, [checkProg])
 
+        useEffect(() =>{
+            if(checkProg.kashyyk === "true"){
+            setCheckKashyyyk(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.utapau === "true"){
+            setCheckUtapau(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.coruscant3 === "true"){
+            setCheckCoruscant3(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.mustafar === "true"){
+            setCheckMustafar(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.polisMassa === "true"){
+            setCheckPolisMassa(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.coruscant4 === "true"){
+            setCheckCoruscant4(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.naboo4 === "true"){
+            setCheckNaboo4(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        useEffect(() =>{
+            if(checkProg.alderaan === "true"){
+            setCheckAlderaan(true);
+        }
+        return() =>{
+        }
+        }, [checkProg])
+
+        if (isLoading) return <div><Hyperjump/></div>
+
+        if(!isAuthenticated){
+            return(<Navigate to="/"/>)
+            }
     return(
         <Wrapper>
             <AllPlanets>
-
+                <Coruscant2>
+                    <NavLinky to={`/6473b4b72a26218960c4b044`}>
+                    <Image id="6473b4b72a26218960c4b044" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Coruscant2>
+                {
+                checkCoruscant2 &&(
+                <Kashyyk>
+                    <NavLinky to={`/6473bb7d2a26218960c4b045`}>
+                    <Image id="6473bb7d2a26218960c4b045" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1685716261/kashyyk_hmr5lu.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Kashyyk>
+                )
+                }
+                {
+                checkKashyyyk &&(
+                <Utapau>
+                    <NavLinky to={`/6473d7df2a26218960c4b047`}>
+                    <Image id="6473d7df2a26218960c4b047" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1685716759/utapau_xqhcbc.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Utapau>
+                )
+                }
+                {
+                checkUtapau &&(
+                <Coruscant3>
+                    <NavLinky to={`/6473da172a26218960c4b049`}>
+                    <Image id="6473da172a26218960c4b049" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Coruscant3>
+                )
+                }
+                {
+                checkCoruscant3 &&(
+                <Mustafar>
+                    <NavLinky to={`/6473e2832a26218960c4b04a`}>
+                    <Image id="6473e2832a26218960c4b04a" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1685716595/mustafar_vc5pjp.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Mustafar>
+                )
+                }
+                {
+                checkMustafar &&(
+                <PolisMassa>
+                    <NavLinky to={`/6473fa142a26218960c4b04b`}>
+                    <Image id="6473fa142a26218960c4b04b" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1685716638/polis_masa_wvgkfy.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </PolisMassa>
+                )
+                }
+                {
+                checkPolisMassa &&(
+                <Coruscant4>
+                    <NavLinky to={`/6473fca12a26218960c4b04c`}>
+                    <Image id="6473fca12a26218960c4b04c" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995790/Coruscant_f6yipp.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Coruscant4>
+                )
+                }
+                {
+                checkCoruscant4 &&(
+                <Naboo4>
+                    <NavLinky to={`/6473ff6c2a26218960c4b04d`}>
+                    <Image id="6473ff6c2a26218960c4b04d" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1681670868/planet_naboo_elowc5.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Naboo4>
+                )
+                }
+                {
+                checkNaboo4 &&(
+                <Alderaan>
+                    <NavLinky to={`/647401c62a26218960c4b04f`}>
+                    <Image id="647401c62a26218960c4b04f" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1685716108/alderan_exw7fn.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Alderaan>
+                )
+                }
+                {
+                checkAlderaan &&(
+                <Tatooine2>
+                    <NavLinky to={`/647403442a26218960c4b050`}>
+                    <Image id="647403442a26218960c4b050" cloudName="dly85se71" publicId="https://res.cloudinary.com/dly85se71/image/upload/v1680995573/Tatooine_z0rkon.png" style={{height: '90px', width: '90px'}}/>
+                    </NavLinky>
+                </Tatooine2>
+                )
+                }
             </AllPlanets>
         <Cockpit/>
         <Box>
@@ -32,6 +228,27 @@ const Episode3 = () =>{
 }
 
 export default Episode3;
+
+const Coruscant2 = styled.div`
+`
+const Kashyyk = styled.div`
+`
+const Utapau = styled.div`
+`
+const Coruscant3 = styled.div`
+`
+const Mustafar = styled.div`
+`
+const PolisMassa = styled.div`
+`
+const Coruscant4 = styled.div`
+`
+const Naboo4 = styled.div`
+`
+const Alderaan = styled.div`
+`
+const Tatooine2 = styled.div`
+`
 
 const Wrapper = styled.div`
 margin:0px;
