@@ -10,7 +10,7 @@ const Episode2 = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const [planets, setPlanets] = useState(null);
     const [checkProg, setCheckProg] = useState([]);
-    const [checkKamino, setcheckKamino] = useState(false);
+    const [checkKamino, setCheckKamino] = useState(false);
     const [checkGeonosis, setCheckGeonosis] = useState(false);
 
     useEffect(() =>{
@@ -45,7 +45,7 @@ const Episode2 = () => {
 
     useEffect(() =>{
         if(checkProg.kamino === "true"){
-        setcheckKamino(true);
+        setCheckKamino(true);
     }
     return() =>{
     }
@@ -98,11 +98,14 @@ const Episode2 = () => {
     )
 }
 
-export default Episode2;
-
+const NavLinky = styled(NavLink)`
+`
 const Wrapper = styled.div`
 margin:0px;
 overflow: hidden;
+width: 100vw;
+height: 100vh;
+background-color: black;
 `
 const Naboo3 = styled.div`
 `
@@ -112,9 +115,12 @@ const Kamino = styled.div`
 `
 const AllPlanets = styled.div`
 display: flex;
+flex-wrap: wrap;
 position:absolute;
-left:35%;
-top:30%;
+left:20%;
+top:10%;
+width: 63vw;
+height:25vh;
 `
 const Stargazing = styled.div`
 background-color: white;
@@ -140,5 +146,5 @@ background-color:black;
 height:100vh;
 width:100vw;
 `
-const NavLinky = styled(NavLink)`
-`
+
+export default Episode2;

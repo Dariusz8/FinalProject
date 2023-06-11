@@ -259,9 +259,12 @@ background-color: black;
 `
 const AllPlanets = styled.div`
 display: flex;
+flex-wrap: wrap;
 position:absolute;
-left:35%;
-top:30%;
+left:20%;
+top:10%;
+width: 63vw;
+height:25vh;
 `
 const Stargazing = styled.div`
 background-color: white;
