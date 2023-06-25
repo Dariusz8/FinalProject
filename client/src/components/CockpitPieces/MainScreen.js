@@ -187,14 +187,13 @@ const MainScreen = () => {
     )
 }
 
-export default MainScreen
-
 const StyledImage = styled(Image)`
 position:fixed;
 left: 700px;
 bottom:100px;
-width:220px;
-height:210px;
+max-width:220px;
+max-height:210px;
+border-radius: 22px;
 z-index:100000;
 `
 const CharacterButton = styled.button`
@@ -292,3 +291,4 @@ padding-left:1vw;
 padding-right: 1vw;
 font-weight: 26px;
 `
+export default MainScreen

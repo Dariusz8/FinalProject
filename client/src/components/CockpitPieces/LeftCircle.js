@@ -13,8 +13,6 @@ const LeftCircle = () => {
     )
 }
 
-export default LeftCircle;
-
 const SpeedIcon = styled.div`
 position:fixed;
 top:59%;
@@ -24,8 +22,8 @@ background-color: rgb(13,13,13);
 position: fixed;
 left:10vw;
 top:45vh;
-width: 200px;
-height:200px;
+width: 14vw;
+height:26vh;
 border-radius: 50%;
 z-index: 1000;
 display: flex;
@@ -34,3 +32,4 @@ align-items: center;
 border: solid rgb(15,15,15) 8px;
 color:limegreen;
 `
+export default LeftCircle;

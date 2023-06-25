@@ -6,8 +6,6 @@ import RightCircle from "./CockpitPieces/RightCircle";
 import RightCircleRadar from "./CockpitPieces/RightCircleRadar";
 import LeftCircle from "./CockpitPieces/LeftCircle";
 
-
-
 const Cockpit = () =>{
 
     return(
@@ -24,6 +22,4 @@ const Cockpit = () =>{
 const Wrapper = styled.div`
 z-index:100;
 `
-
 export default Cockpit;
-

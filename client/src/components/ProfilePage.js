@@ -36,8 +36,6 @@ const ProfilePage = () => {
     )
 }
 
-export default ProfilePage;
-
 const StyledImage = styled(Image)`
 height:100vh;
 width: 100vw;
@@ -62,3 +60,4 @@ position: fixed;
 left:6%;
 top:7%;
 `
+export default ProfilePage;

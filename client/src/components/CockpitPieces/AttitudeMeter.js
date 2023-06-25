@@ -17,7 +17,7 @@ position: fixed;
 max-width: 200px;
 max-height: 200px;
 left: 16vw;
-bottom:2vh;
+bottom:1vh;
 `
 const Border = styled(Image)`
 max-width: 200px;
@@ -44,11 +44,14 @@ animation: smallRotate 1s infinite linear;
     0%{
         transform: rotate(0deg);
     }
-    50%{
-        transform: rotate(5deg);
+    33%{
+        transform: rotate(3deg);
+    }
+    66%{
+        transform: rotate(-3deg);
     }
     100%{
-        transform: rotate(-5deg);
+        transform: rotate(0deg);
     }
 }
 `

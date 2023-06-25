@@ -8,8 +8,6 @@ const TopRightFrame = () =>{
         )
 }
 
-export default TopRightFrame
-
 const Beam = styled.div`
 background-color:rgb(28,28,28);
 color:white;
@@ -19,3 +17,4 @@ z-index: 100;
 width: 100vw;
 height: 100vh;
 `
+export default TopRightFrame

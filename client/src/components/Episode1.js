@@ -115,8 +115,6 @@ const Episode1 = () => {
     )
 }
 
-export default Episode1;
-
 const Wrapper = styled.div`
 margin:0px;
 overflow: hidden;
@@ -164,3 +162,4 @@ width:100vw;
 `
 const NavLinky = styled(NavLink)`
 `
+export default Episode1;

@@ -27,10 +27,6 @@ const Profile = () => {
         return(<Navigate to="/quests"/>)
     }
 
-    // if(!isAuthenticated){
-    //     return(<Navigate to="/"/>)
-    // }
-
     const doUser = async() =>{
         await setReady(true);
         await fetch('/user',{
@@ -90,5 +86,4 @@ text-align: center;
 margin-bottom: 2%;
 border-radius: 10%;
 `
-
 export default Profile;

@@ -6,8 +6,6 @@ import Cockpit from "./Cockpit";
 import {Image} from "cloudinary-react";
 import Hyperjump from "./Hyperjump";
 
-
-
 const PlanetDetail = () => {
     const { isAuthenticated, isLoading } = useAuth0();
     const {id} = useParams();
@@ -64,5 +62,4 @@ top:0px;
 left:0px;
 margin:0px;
 `
-
 export default PlanetDetail;

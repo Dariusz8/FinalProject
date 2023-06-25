@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-//import { Navigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 
@@ -26,8 +25,6 @@ const LoginButton = () => {
         )
     )
 }
-
-export default LoginButton;
 
 const Wrapper = styled.div`
 position:relative;
@@ -143,3 +140,4 @@ animation: animateLeft 2.8s linear infinite;
   }
   }
 `
+export default LoginButton;

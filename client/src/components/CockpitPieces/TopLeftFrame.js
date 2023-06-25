@@ -8,8 +8,6 @@ const TopLeftFrame = () =>{
     )
 }
 
-export default TopLeftFrame
-
 const Beam = styled.div`
 background-color:rgb(28,28,28);
 color:white;
@@ -20,4 +18,4 @@ width: 100vw;
 height: 100vh;
 transform: scaleX(-1);
 `
-  
+export default TopLeftFrame

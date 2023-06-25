@@ -20,8 +20,8 @@ const Wrapper = styled.div`
 position: fixed;
 right:10vw;
 top:45vh;
-width: 200px;
-height:200px;
+width: 14vw;
+height:26vh;
 border-radius: 50%;
 z-index: 1001;
 display: flex;

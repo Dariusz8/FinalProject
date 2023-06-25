@@ -29,7 +29,6 @@ const Dash = () => {
     const [bottomButtonClicked, setBottomButtonClicked] = useState(false);
 
     return(
-    <>
         <Dashboard>
             <MainScreen/>
             <AttitudeMeter/>
@@ -94,11 +93,8 @@ const Dash = () => {
                 </OptionsStatus>
             </FireControls>
         </Dashboard>
-    </>
     )
 }
-
-export default Dash
 
 const FireOptions = styled.div`
 display: flex;
@@ -237,8 +233,8 @@ flex-direction: column;
 justify-content: space-around;
 overflow: hidden;
 background-color: rgb(15,15,15);
-width: 270px;
-height: 60px;
+max-width: 270px;
+max-height: 60px;
 position: fixed;
 top:52%;
 left:40%;
@@ -248,8 +244,8 @@ color:limegreen;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-width:60px;
-height:40px;
+max-width:60px;
+max-height:40px;
 position:fixed;
 left:26%;
 top:60%;
@@ -264,7 +260,7 @@ color:limegreen;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-height:50px;
+height:6vh;
 position:fixed;
 right:38%;
 top:53%;
@@ -275,7 +271,7 @@ color:limegreen;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-height:50px;
+height:6vh;
 position:fixed;
 right:35%;
 top:53%;
@@ -288,3 +284,4 @@ width: 100vw;
 height: 100vh;
 background-color: rgb(20,20,20);
 `
+export default Dash

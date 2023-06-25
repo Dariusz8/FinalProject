@@ -60,8 +60,6 @@ const Home = () => {
     )
 }
 
-export default Home;
-
 const StyledImage = styled(Image)`
 height: 100vh;
 width: 100vw;
@@ -260,3 +258,4 @@ const LogStuff = styled.div`
   bottom: 10vh;
   transform: translateX(-50%); 
 `
+export default Home;
