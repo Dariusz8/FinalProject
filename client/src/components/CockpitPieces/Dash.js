@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import MainScreen from "./MainScreen";
+import AttitudeMeter from "./AttitudeMeter";
 import {BsLungs} from "react-icons/bs";
 import {FiMic} from "react-icons/fi";
 import {FiMicOff} from "react-icons/fi";
@@ -31,6 +32,7 @@ const Dash = () => {
     <>
         <Dashboard>
             <MainScreen/>
+            <AttitudeMeter/>
             <OxygenStatus>
                     <LungIcon><BsLungs/></LungIcon>   
                     {oxygenLevel} %
